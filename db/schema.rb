@@ -25,6 +25,9 @@ ActiveRecord::Schema.define(version: 2019_02_28_074501) do
     t.string "last_sign_in_ip"
     t.string "name"
     t.string "avatar_image"
+    t.string "introduce"
+    t.string "gender"
+    t.boolean "admin", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
