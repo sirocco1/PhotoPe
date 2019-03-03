@@ -1,0 +1,21 @@
+<div class="gray-container">
+  <div class="main-container">
+    <h2 class="login-title">LOGIN FORM</h2>
+      <div class="login-box">
+        <%= image_tag "kuma.png" %>
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder: "Email",class: "input-item",style: "padding-left: 20px;" %>
+            <%= f.password_field :password, autocomplete: "current-password",placeholder: "Password",class: "input-item",style: "padding-left: 20px;" %>
+            <% if devise_mapping.rememberable? %><% end %>
+            <div class="login-center">
+              <%= f.submit "LOGIN",class: "execution-btn" %>
+            </div>
+          <% end %>
+      </div>
+      <div class="register-link">
+        <p class="sub-title">-------------<span>はじめての方はこちら</span>------------</p>
+        <%= link_to 'SIGN UP', new_user_registration_path,class: "btn execution-btn",style: "line-height: 2.1;"%>
+        <p class="sub-title">------------------------------------------------------------</p>
+      </div>
+  </div>
+</div>
