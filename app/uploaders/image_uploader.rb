@@ -1,6 +1,16 @@
 class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
-  process resize_to_limit: [400, 400]
+  version :thumb, if: :is_thumb?
+
+  version :thumb do
+    process resize_to_limit: [400, 400]
+  end
+
+  private
+  def is_thumb? image
+    image.content_type.include?("image/")
+  end
+
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
@@ -40,7 +50,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # アップロード可能な拡張子
   def extension_whitelist
-    %w(jpg jpeg gif png)
+    %w(jpg jpeg gif png mp4)
   end
 
   # Override the filename of the uploaded files:
