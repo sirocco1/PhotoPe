@@ -3,12 +3,29 @@
 
 <% @pictures.each do |picture| %>
 <dt><%= picture.description %></dt>
-<% if picture.image? %>
-  <% if picture.image.file.content_type.include?('image/') %>
-    <%= image_tag picture.image.url(:thumb) %>
-  <% else %>
-    <%= video_tag picture.image.url, width: "30%", height: "30%",
+	<% if picture.image? %>
+ 		 <% if picture.image.file.content_type.include?('image/') %>
+    		<%= image_tag picture.image.url(:thumb) %>
+  		<% else %>
+    		<%= video_tag picture.image.url, width: "30%", height: "30%",
                   controls: true, autobuffer: true %>
+  		<% end %>
+	<% end %>
+
+	 <!-- 追加 -->
+  <% if user_signed_in? %>
+    <% if picture.favorited_by?(current_user) %> <!-- ログインしているユーザーがファボしたかどうかで分岐 -->
+        <p><span>お気に入り解除: </span><%=link_to picture.favorites.count, picture_favorites_path(picture.id), method: :delete %></p>
+    <% else %>
+        <p><span>お気に入り登録: </span><%=link_to picture.favorites.count, picture_favorites_path(picture.id), method: :post %></p>
+    <% end %>
+  <% else %>
+    <p><span>お気に入り数: </span><%= picture.favorites.count %></p>
   <% end %>
+  <!-- ここまで -->
 <% end %>
+
+<% @favorite_pictures.each do |picture| %>
+  <hr>
+  <p><span>ファボツイート内容: </span><%=link_to picture.description, picture_path(picture.id) %></p>
 <% end %>
