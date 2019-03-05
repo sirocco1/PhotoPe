@@ -1,7 +1,12 @@
 class Picture < ApplicationRecord
-	belongs_to :user
 	mount_uploader :image, ImageUploader
+	belongs_to :user
+	has_many :favorites
 	validate :image_size
+
+	def favorited_by?(user)
+		favorites.where(user_id: user.id).exists?
+	end
 
 	private
 	# 独自のバリデーションを定義 / アップロードされた画像サイズを制限
