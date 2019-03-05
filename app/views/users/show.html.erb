@@ -1,5 +1,16 @@
 <h1>Users#show</h1>
 <p>Find me in app/views/users/show.html.erb</p>
+<!-- 追加 -->
+<p><%=link_to "フォロー", follows_user_path(@user.id) %></p>
+<p><%=link_to "フォロワー", followers_user_path(@user.id) %></p>
+<% if current_user != @user %>
+    <% if @user.followed_by?(current_user) %>
+        <p><%=link_to "フォロー済み", user_relationships_path(@user.id), method: :delete %></p>
+    <% else %>
+        <p><%=link_to "フォローする", user_relationships_path(@user.id), method: :post %></p>
+    <% end %>
+<% end %>
+<!-- ここまで-->
 
 <% @pictures.each do |picture| %>
 <dt><%= picture.description %></dt>
@@ -23,6 +34,16 @@
     <p><span>お気に入り数: </span><%= picture.favorites.count %></p>
   <% end %>
   <!-- ここまで -->
+ <!-- ここを追加 -->
+    <% if current_user != picture.user %>
+        <% if picture.user.followed_by?(current_user) %>
+            <p><%=link_to "フォロー済み", user_relationships_path(picture.user.id), method: :delete %></p>
+        <% else %>
+            <p><%=link_to "フォローする", user_relationships_path(picture.user.id), method: :post %></p>
+        <% end %>
+    <% end %>
+    <!-- ここまで -->
+
 <% end %>
 
 <% @favorite_pictures.each do |picture| %>
