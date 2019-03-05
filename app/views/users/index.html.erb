@@ -1,0 +1,9 @@
+<h1>Users#index</h1>
+<% @users.each do |user| %>
+<table>
+<tr>
+	<th><%= link_to user.name, user%>（名前）</th>
+	<th><%= user.email%>（メルアド）</th>
+</tr>
+</table>
+<% end %>

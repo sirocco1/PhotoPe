@@ -7,14 +7,14 @@
             <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder: "Email",class: "input-item",style: "padding-left: 20px;" %>
             <%= f.password_field :password, autocomplete: "current-password",placeholder: "Password",class: "input-item",style: "padding-left: 20px;" %>
             <% if devise_mapping.rememberable? %><% end %>
-            <div class="login-center">
+            <div class="action-center">
               <%= f.submit "LOGIN",class: "execution-btn" %>
             </div>
           <% end %>
       </div>
       <div class="register-link">
         <p class="sub-title">-------------<span>はじめての方はこちら</span>------------</p>
-        <%= link_to 'SIGN UP', new_user_registration_path,class: "btn execution-btn",style: "line-height: 2.1;"%>
+        <%= link_to '新規登録する', new_user_registration_path,class: "btn execution-btn",style: "line-height: 2.1;"%>
         <p class="sub-title">------------------------------------------------------------</p>
       </div>
   </div>
