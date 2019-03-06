@@ -36,6 +36,11 @@ class UsersController < ApplicationController
     @users = user.followers
   end
 
+  def favorites
+    user = User.find(params[:id])
+    @favorite_pictures = user.favorite_pictures
+  end
+
   private
   def user_params
     params.require(:user).permit(:name, :introduce, :avatar_image, :gender)

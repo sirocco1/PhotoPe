@@ -1,4 +1,22 @@
-<%= image_tag 'header.jpg',style:"height:300px; width:100%; object-fit:cover;",alt:"ヘッダー画像です" %>
+<div class="mypage-header"><%= image_tag 'header.jpg',style:"height:300px; width:100%; object-fit:cover;",alt:"ヘッダー画像です" %>
+</div>
+<div class="mypage-menu">
+  <ul class="menu-itembox">
+    <li class="menu-item">
+      <span>投稿</span>
+      <span class="item-value"><%=link_to "#{@user.pictures.count}", user_path(@user.id) %></span>
+    </li>
+    <li class="menu-item">
+      <span>フォロー</span>
+      <span class="item-value"><%=link_to "#{@user.followings.count}", follows_user_path(@user.id) %></span>
+    </li>
+    <li class="menu-item">
+      <span>フォロワー</span>
+      <span class="item-value"><%=link_to "#{@user.followers.count}", followers_user_path(@user.id) %></span>
+    </li>
+  </ul>
+</div>
+
 <div class="container">
   <div class="row">
     <div class="col-xs-3">
@@ -10,12 +28,19 @@
      </div>
    </div>
    <div class="col-xs-9">
+
+
+
    </div>
 
   </div>
 </div>
 
 
+
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
 
 <%= @user.name %>
 <%= @user.introduce %>
@@ -73,4 +98,12 @@
 <% @favorite_pictures.each do |picture| %>
   <hr>
   <p><span>ファボツイート内容: </span><%=link_to picture.description, picture_path(picture.id) %></p>
+  <% if picture.image? %>
+     <% if picture.image.file.content_type.include?('image/') %>
+        <%= image_tag picture.image.url(:thumb) %>
+      <% else %>
+        <%= video_tag picture.image.url, width: "30%", height: "30%",
+                  controls: true, autobuffer: true %>
+      <% end %>
+  <% end %>
 <% end %>

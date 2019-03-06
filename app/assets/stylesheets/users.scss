@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+/*マイページ（user_show) */
 .avatar-image {
 	border-radius: 50%;
 }
@@ -9,3 +10,32 @@
 	position: relative;
 	top: -100px;
 }
+.mypage-menu {
+	height: 50px;
+	background-color: #fff;
+	border: 1px solid #6E6E6E;
+}
+.menu-itembox {
+	width: 500px;
+	height: 50px;
+	margin-left: 30%;
+	list-style-type: none;
+}
+.menu-item {
+	width: 80px;
+	height: 50px;
+	text-align: center;
+	font-size: 12px;
+	font-weight: bold;
+	padding-top: 7px;
+	color: #777;
+    letter-spacing: .02em;
+    line-height: 1.4em;
+    display: inline-block;
+}
+.item-value {
+	font-size: 18px;
+	font-weight: bold;
+	display: block;
+}
+/*マイページ（user_show) ここまで*/
