@@ -1,39 +1,12 @@
-<div class="mypage-header"><%= image_tag 'header.jpg',style:"height:300px; width:100%; object-fit:cover;",alt:"ヘッダー画像です" %>
-</div>
-<div class="mypage-menu">
-  <ul class="menu-itembox">
-    <li class="menu-item">
-      <span>投稿</span>
-      <span class="item-value"><%=link_to "#{@user.pictures.count}", user_path(@user.id) %></span>
-    </li>
-    <li class="menu-item">
-      <span>フォロー</span>
-      <span class="item-value"><%=link_to "#{@user.followings.count}", follows_user_path(@user.id) %></span>
-    </li>
-    <li class="menu-item">
-      <span>フォロワー</span>
-      <span class="item-value"><%=link_to "#{@user.followers.count}", followers_user_path(@user.id) %></span>
-    </li>
-  </ul>
-</div>
-
+<%= render 'users/menu' %>
 <div class="container">
-  <div class="row">
-    <div class="col-xs-3">
-      <div class="position-change">
-      <%= image_tag @user.avatar_image.url,class: "avatar-image" %>
-      <span style="color:#657786;">ユーザネーム</span>
-    <h4><%= @user.name %></h4><span style="color:#657786;"><%= @user.gender %></span>
-<p><%= @user.introduce %></p>
-     </div>
-   </div>
-   <div class="col-xs-9">
-
-
-
-   </div>
-
-  </div>
+    <div class="row">
+        <div class="col-xs-3">
+            <%= render 'users/profile' %>
+        </div>
+        <div class="col-xs-9">
+        </div>
+    </div>
 </div>
 
 
