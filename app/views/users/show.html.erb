@@ -1,3 +1,21 @@
+<%= image_tag 'header.jpg',style:"height:300px; width:100%; object-fit:cover;",alt:"ヘッダー画像です" %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-3">
+      <div class="position-change">
+      <%= image_tag @user.avatar_image.url,class: "avatar-image" %>
+      <span style="color:#657786;">ユーザネーム</span>
+    <h4><%= @user.name %></h4><span style="color:#657786;"><%= @user.gender %></span>
+<p><%= @user.introduce %></p>
+     </div>
+   </div>
+   <div class="col-xs-9">
+   </div>
+
+  </div>
+</div>
+
+
 
 <%= @user.name %>
 <%= @user.introduce %>
