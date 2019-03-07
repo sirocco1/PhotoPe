@@ -5,7 +5,25 @@
             <%= render 'users/profile' %>
         </div>
         <div class="col-xs-9">
-        	<p>uuuuu</p>
+        	<br>
+        	<% @users.each do |user| %>
+        		<div class="flex-container">
+        			<div class="flex-item1">
+        				<%= image_tag user.avatar_image.url,class: "",style: "width:90px; height:90px;border-radius:50%;" %>
+        			</div>
+        			<div class="flex-item2">
+  						<strong><%= link_to user.name, user_path(user.id),class: "user-name" %></strong>
+    						<% if current_user != user %>
+        						<% if user.followed_by?(current_user) %>
+            						<span><%=link_to "フォロー中", user_relationships_path(user.id), method: :delete %></span>
+       				    		<% else %>
+            						<span><%=link_to "フォローする", user_relationships_path(user.id), method: :post %></span>
+        						<% end %>
+    						<% end %>
+    					<p><%= user.introduce %></p>
+    				</div>
+    			</div>
+			<% end %>
         </div>
     </div>
 </div>
