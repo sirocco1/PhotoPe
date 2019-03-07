@@ -6,43 +6,7 @@
         </div>
         <div class="col-xs-9">
         	<br>
-        	<% @users.each do |user| %>
-        		<div class="flex-container">
-        			<div class="flex-item1">
-        				<%= image_tag user.avatar_image.url,class: "",style: "width:90px; height:90px;border-radius:50%;" %>
-        			</div>
-        			<div class="flex-item2">
-  						<strong><%= link_to user.name, user_path(user.id),class: "user-name" %></strong>
-    						<% if current_user != user %>
-        						<% if user.followed_by?(current_user) %>
-            						<span class="following"><%=link_to "フォロー中", user_relationships_path(user.id), method: :delete,"data-confirm" => "本当にフォローを解除しますか？",style: "color:#fff;" %></span>
-       				    		<% else %>
-            						<span><%=link_to "フォローする", user_relationships_path(user.id), method: :post %></span>
-        						<% end %>
-    						<% end %>
-    					<p style="padding-top:10px;"><%= user.introduce %></p>
-    				</div>
-    			</div>
-			<% end %>
+        	<%= render 'users/relationship' %>
         </div>
     </div>
 </div>
-
-
-
-
-
-<h1>Users#follows</h1>
-<p>Find me in app/views/users/follows.html.erb</p>
-
-<% @users.each do |user| %>
-  <hr>
-  <p><span>email: </span><%= link_to user.email, user_path(user.id) %></p>
-    <% if current_user != user %>
-        <% if user.followed_by?(current_user) %>
-            <p><%=link_to "フォロー済み", user_relationships_path(user.id), method: :delete %></p>
-        <% else %>
-            <p><%=link_to "フォローする", user_relationships_path(user.id), method: :post %></p>
-        <% end %>
-    <% end %>
-<% end %>

@@ -1,0 +1,18 @@
+<% @users.each do |user| %>
+    <div class="flex-container">
+        <div class="flex-item1">
+            <%= image_tag user.avatar_image.url,class: "",style: "width:90px; height:90px;border-radius:50%;" %>
+        </div>
+        <div class="flex-item2">
+  			<strong><%= link_to user.name, user_path(user.id),class: "user-name" %></strong>
+                <% if current_user != user %>
+        		    <% if user.followed_by?(current_user) %>
+                        <span class="following"><%=link_to "フォロー中", user_relationships_path(user.id), method: :delete,"data-confirm" => "本当にフォローを解除しますか？",style: "color:#fff;" %></span>
+       				<% else %>
+            			<span class="to-follow"><%=link_to "フォローする", user_relationships_path(user.id), method: :post %></span>
+        			<% end %>
+    			<% end %>
+    			<p style="padding-top:10px;"><%= user.introduce %></p>
+    	</div>
+    </div>
+<% end %>
