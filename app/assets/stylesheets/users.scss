@@ -51,5 +51,13 @@
 }
 .user-name {
 	color:#090909;
-	font-size: 16px;
+	font-size: 18px;
+}
+.following {
+	display: inline-block;
+	background-color: #158cf3;
+	border: 1px solid #158cf3;
+	padding: 3px;
+	border-radius: 5px;
+	float: right;
 }
