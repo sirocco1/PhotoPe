@@ -1,3 +1,72 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*マイページ共通 */
+.avatar-image {
+	border-radius: 50%;
+}
+.position-change {
+	position: relative;
+	top: -100px;
+}
+.mypage-menu {
+	height: 50px;
+	background-color: #fff;
+	border: 1px solid #6E6E6E;
+}
+.menu-itembox {
+	width: 500px;
+	height: 50px;
+	margin-left: 30%;
+	list-style-type: none;
+}
+.menu-item {
+	width: 80px;
+	height: 50px;
+	text-align: center;
+	font-size: 12px;
+	font-weight: bold;
+	padding-top: 7px;
+	color: #777;
+    letter-spacing: .02em;
+    line-height: 1.4em;
+    display: inline-block;
+}
+.item-value {
+	font-size: 18px;
+	font-weight: bold;
+	display: block;
+}
+/*マイページ共通ここまで*/
+/*フォローフォロワー*/
+.flex-container {
+  display: flex;
+  border-bottom: 1px dotted #9d9d9d;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+.flex-item2 {
+	flex-grow: 3;
+	margin-left: 2%;
+}
+.user-name {
+	color:#090909;
+	font-size: 18px;
+}
+.following {
+	display: inline-block;
+	background-color: #158cf3;
+	border: 1px solid #158cf3;
+	padding: 3px;
+	border-radius: 5px;
+	float: right;
+}
+.to-follow {
+	display: inline-block;
+	border: 1px solid #158cf3;
+	padding: 3px;
+	border-radius: 5px;
+	float: right;
+}
+/*フォローフォロワーここまで*/

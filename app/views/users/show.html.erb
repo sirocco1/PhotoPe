@@ -1,3 +1,26 @@
+<%= render 'users/menu' %>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-3">
+            <%= render 'users/profile' %>
+        </div>
+        <div class="col-xs-9">
+          <p>aaa</p>
+        </div>
+    </div>
+</div>
+
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+
+<%= @user.name %>
+<%= @user.introduce %>
+<%= image_tag @user.avatar_image.url %>
+
+
 <h1>Users#show</h1>
 <p>Find me in app/views/users/show.html.erb</p>
 <!-- 追加 -->
@@ -49,4 +72,12 @@
 <% @favorite_pictures.each do |picture| %>
   <hr>
   <p><span>ファボツイート内容: </span><%=link_to picture.description, picture_path(picture.id) %></p>
+  <% if picture.image? %>
+     <% if picture.image.file.content_type.include?('image/') %>
+        <%= image_tag picture.image.url(:thumb) %>
+      <% else %>
+        <%= video_tag picture.image.url, width: "30%", height: "30%",
+                  controls: true, autobuffer: true %>
+      <% end %>
+  <% end %>
 <% end %>
