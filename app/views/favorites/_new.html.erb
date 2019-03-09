@@ -1,0 +1,32 @@
+<div class="post-container">
+	<% @favorite_pictures.each do |picture| %>
+		<div class="post-item">
+        	<p><%= picture.created_at %></p>
+        	<% if picture.image? %>
+            	<% if picture.image.file.content_type.include?('image/') %>
+                	<%= image_tag picture.image.url(:thumb),size: '250x250' %>
+                <% else %>
+                    <%= video_tag picture.image.url,size: '250x250',controls: true, autobuffer: true %>
+                <% end %>
+            <% end %>
+
+            <% if user_signed_in? %>
+				<% if picture.favorited_by?(current_user) %>
+
+                <%= button_to picture_favorites_path(picture.id), method: :delete, id: "favo-button", remote: true do %>
+    				<span>お気に入り解除:<%= picture.favorites.count %></span>
+                    <% end %>
+    			<% else %>
+
+                <%= button_to picture_favorites_path(picture), id: "favo-button", remote: true do %>
+
+        			<span>お気に入り登録:<%= picture.favorites.count %></span>
+                    <% end %>
+
+    			<% end %>
+			<% else %>
+    			<p><span>お気に入り数: </span><%= picture.favorites.count %></p>
+			<% end %>
+		</div>
+    <% end %>
+ </div>
