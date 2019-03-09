@@ -70,3 +70,11 @@
 	float: right;
 }
 /*フォローフォロワーここまで*/
+.post-container {
+	display: flex;
+	flex-wrap: wrap;
+}
+.post-item {
+	width: 275px;
+	text-align: center;
+}

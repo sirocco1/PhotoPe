@@ -24,9 +24,9 @@ $('#picture_image').bind('change', function() {
 </p>
 <% if picture.image? %>
   <% if picture.image.file.content_type.include?('image/') %>
-    <%= image_tag picture.image.url(:thumb) %>
+    <%= image_tag picture.image.url(:thumb),size: '250x250' %>
   <% else %>
-    <%= video_tag picture.image.url, width: "30%", height: "30%",
+    <%= video_tag picture.image.url,size: '250x250',
                   controls: true, autobuffer: true %>
   <% end %>
 <% end %>

@@ -5,7 +5,32 @@
             <%= render 'users/profile' %>
         </div>
         <div class="col-xs-9">
-          <p>aaa</p>
+
+          <div class="post-container">
+                 <% @pictures.each do |picture| %>
+                 <div class="post-item">
+                 <p><%= picture.created_at %></p>
+                        <% if picture.image? %>
+                            <% if picture.image.file.content_type.include?('image/') %>
+                                <%= image_tag picture.image.url(:thumb),size: '250x250' %>
+                            <% else %>
+                                <%= video_tag picture.image.url,size: '250x250',controls: true, autobuffer: true %>
+                            <% end %>
+                        <% end %>
+
+                          <% if user_signed_in? %>
+    <% if picture.favorited_by?(current_user) %> <!-- ログインしているユーザーがファボしたかどうかで分岐 -->
+        <p><span>お気に入り解除: </span><%=link_to picture.favorites.count, picture_favorites_path(picture.id), method: :delete %></p>
+    <% else %>
+        <p><span>お気に入り登録: </span><%=link_to picture.favorites.count, picture_favorites_path(picture.id), method: :post %></p>
+    <% end %>
+  <% else %>
+    <p><span>お気に入り数: </span><%= picture.favorites.count %></p>
+  <% end %>
+                 </div>
+                  <% end %>
+        </div>
+
         </div>
     </div>
 </div>
