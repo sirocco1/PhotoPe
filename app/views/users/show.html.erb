@@ -5,7 +5,26 @@
             <%= render 'users/profile' %>
         </div>
         <div class="col-xs-9">
-          <p>aaa</p>
+            <div class="post-container">
+                <% @pictures.each do |picture| %>
+                    <div class="post-item">
+                        <p><%= picture.created_at %></p>
+                        <% if picture.image? %>
+                            <% if picture.image.file.content_type.include?('image/') %>
+                                <%= image_tag picture.image.url(:thumb),size: '250x250' %>
+                            <% else %>
+                                <%= video_tag picture.image.url,size: '250x250',controls: true, autobuffer: true %>
+                            <% end %>
+                        <% end %>
+                        <!-- JSファイルを呼び出し -->
+                        <div class="fabo-style">
+                            <div id="favo_buttons_<%= picture.id %>">
+                              <%= render partial: 'favorites/post', locals: { picture: picture} %>
+                            </div>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
         </div>
     </div>
 </div>

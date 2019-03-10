@@ -70,3 +70,22 @@
 	float: right;
 }
 /*フォローフォロワーここまで*/
+.post-container {
+	display: flex;
+	flex-wrap: wrap;
+}
+.post-item {
+	width: 275px;
+	text-align: center;
+}
+/*いいね機能の色変更（非同期）*/
+.icolor1 {
+	color: #9405f9;
+}
+.icolor0 {
+	color: #ddd;
+}
+.fabo-style {
+	margin-top: 5px;
+}
+/*いいね機能の色変更（非同期）*/
