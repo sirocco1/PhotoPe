@@ -6,6 +6,7 @@ class PicturesController < ApplicationController
   def new
     @picture = Picture.new
     @pictures = Picture.all #仮作成 / 投稿機能確認用
+    @genre = Genre.new #仮作成 / ジャンル追加確認用
   end
 
   def create
@@ -25,7 +26,7 @@ class PicturesController < ApplicationController
 
 private
   def picture_params
-    params.require(:picture).permit(:animal_genre, :image, :video, :description)
+    params.require(:picture).permit(:genre_id, :image, :title, :description)
   end
 
 end
