@@ -2,9 +2,9 @@ class CreatePictures < ActiveRecord::Migration[5.2]
   def change
     create_table :pictures do |t|
       t.integer :user_id
-      t.integer :animal_genre
+      t.integer :genre_id
       t.string :image
-      t.string :video
+      t.string :title
       t.text :description
       t.timestamps
     end
