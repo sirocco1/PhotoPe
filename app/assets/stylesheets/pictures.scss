@@ -1,3 +1,18 @@
 // Place all the styles related to the pictures controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*投稿一覧画面*/
+.index-container {
+	width: 900px;
+	margin: 0 auto;
+}
+.pictures-flex {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.picture-item {
+	width: 220px;
+	text-align: center;
+}
