@@ -1,0 +1,12 @@
+<div class="jo">
+		<div class="picture-item">
+			<span><%= picture.created_at.strftime("%Y-%m-%d %H:%M")%></span>
+			<% if picture.image? %>
+  				<% if picture.image.file.content_type.include?('image/') %>
+    				<%= image_tag picture.image.url(:thumb),size: '200x200' %>
+  				<% else %>
+    				<%= video_tag picture.image.url,size: '200x200',controls: true, autobuffer: true %>
+  				<% end %>
+			<% end %>
+		</div>
+</div>
