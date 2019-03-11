@@ -50,7 +50,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # アップロード可能な拡張子
   def extension_whitelist
-    %w(jpg jpeg gif png mp4)
+    %w(jpg jpeg gif png mp4 mov)
   end
 
   # Override the filename of the uploaded files:
