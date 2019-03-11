@@ -8,7 +8,7 @@
             <div class="post-container">
                 <% @pictures.each do |picture| %>
                     <div class="post-item">
-                        <p><%= picture.created_at %></p>
+                        <p><%= picture.created_at.strftime("%Y-%m-%d %H:%M")%></p>
                         <% if picture.image? %>
                             <% if picture.image.file.content_type.include?('image/') %>
                                 <%= image_tag picture.image.url(:thumb),size: '250x250' %>

@@ -21,7 +21,6 @@ body {
 	margin-top: 70px;
 	background-color: #fafafa;
 }
-
 .header {
 	background-color: #bdef9233;
 	box-shadow:0 2px 8px rgba(30,30,80,.3);
@@ -31,15 +30,14 @@ body {
   	left:0;
   	width:100%;
   	height: 70px;
-  	z-index:24;
+  	z-index:1070;
 }
-
 /*Login & Signup Form (Start)*/
-.gray-container {
-	background-color: #fcf8e3;
-}
 .main-container {
 	margin: 0 auto;
+}
+.color-container {
+	background-color: #fcf8e3;
 }
 .login-title {
 	text-align: center;
