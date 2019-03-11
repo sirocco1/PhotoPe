@@ -19,6 +19,45 @@
 <%= form.submit "ジャンル追加", class: "btn btn-primary" %>
 <% end %>
 
+<!-- モーダル投稿機能 -->
+<button type="button" data-toggle="modal" data-focus="true" data-target="#modal-option" class="btn execution-btn" style="width:130px;">新規投稿</button>
+<div class="modal fade" id="modal-option" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">投稿フォーム</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="px-4 py-3">
+          <%= form_for(@picture) do |f| %>
+          <div class="form-group">
+            <%= f.label :種類 %>
+            <br>
+            <%= f.collection_select(:genre_id, Genre.all, :id, :name) %>
+          </div>
+          <div class="form-group">
+            <%= f.label :ペットor動物の画像や動画 %>
+            <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png,video/*',class: "form-control",placeholder: "必須" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :タイトル %>
+            <%= f.text_field :title,placeholder: "必須",class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :本文 %>
+            <%= f.text_area :description,placeholder: "任意(xxx文字まで)",class: "form-control" %>
+          </div>
+            <%= f.submit "投稿する", class: "btn execution-btn form-control" %>
+            <% end %>
+      </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- モーダル投稿機能 -->
+
 <!-- jQuery使用 / 5MB以上のアップロード時にアラート -->
 <script type="text/javascript">
 $('#picture_image').bind('change', function() {
