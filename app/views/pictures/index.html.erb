@@ -1,8 +1,11 @@
 <div class="index-container">
-	<div class="pictures-flex">
-		<div id="jopost">
+	<div id="pictures-flex">
 		<%= render partial: 'picture', collection: @pictures %>
+		<div class="page-none">
 		<%= paginate @pictures %>
 		</div>
 	</div>
 </div>
+					<div class="page-load">
+			<%= image_tag "load.gif" %>
+			</div>

@@ -5,7 +5,7 @@
 //= require "infinite-scroll.pkgd.min"
 
 $(document).ready () ->
-  $('#jopost').infiniteScroll
+  $('#pictures-flex').infiniteScroll
     path: '.next a'
-    append: '.jo'
+    append: '.picture-item'
     history: false

@@ -120,4 +120,11 @@ body {
 	color: white;
 }
 /*Login & Signup Form (End)*/
-
+/*無限スクロールでページャ表示を消すため*/
+.page-none {
+	display: none;
+}
+.page-load {
+	text-align: center;
+}
+/*無限スクロールでページャ表示を消すため*/
