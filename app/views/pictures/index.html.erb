@@ -1,4 +1,26 @@
 <div class="index-container">
+<div class="saerch-flex">
+	<%= search_form_for(@search, method: :get)  do |f| %>
+	<%= button_tag type: :submit do %>
+	<%= f.hidden_field :genre_name_eq, value:"犬" %>
+   <%= image_tag "kuma.png" %>
+   <% end %>
+<% end %>
+	<%= search_form_for(@search, method: :get)  do |f| %>
+	<%= button_tag type: :submit do %>
+	<%= f.hidden_field :genre_name_eq, value:"猫" %>
+   <%= image_tag "kuma.png" %>
+   <% end %>
+<% end %>
+	<%= search_form_for(@search, method: :get)  do |f| %>
+	<%= link_to request.path do %>
+   <%= image_tag "kuma.png" %>
+   <% end %>
+<% end %>
+</div>
+
+
+
 	<div id="pictures-flex">
 		<%= render partial: 'picture', collection: @pictures %>
 		<div class="page-none">
