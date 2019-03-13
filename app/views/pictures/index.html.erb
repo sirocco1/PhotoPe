@@ -1,24 +1,54 @@
 <div class="index-container">
-		<h1>Pictures#index</h1>
-<p>Find me in app/views/pictures/index.html.erb</p>
+<div class="saerch-flex">
 
-<div class="pictures-flex">
-
-<% @pictures.each do |picture| %>
-
-<div class="picture-item">
-<span><%= picture.created_at.strftime("%Y-%m-%d %H:%M")%></span>
-	<% if picture.image? %>
-  		<% if picture.image.file.content_type.include?('image/') %>
-    		<%= image_tag picture.image.url(:thumb),size: '200x200' %>
-  		<% else %>
-    		<%= video_tag picture.image.url,size: '200x200',
-                  controls: true, autobuffer: true %>
-  		<% end %>
-	<% end %>
-</div>
-
+			<div class="saerch-item">
+	<%= link_to  request.path,data: {"turbolinks" => false} do %>
+   <%= image_tag "newform.jpg",size: '200x110'%>
 <% end %>
 </div>
 
+
+
+		<div class="saerch-item">
+	<%= search_form_for(@search, method: :get)  do |f| %>
+		<%= button_tag type: :submit do %>
+			<%= f.hidden_field :genre_name_eq, value:"犬" %>
+   			<%= image_tag "inuform.jpg",size: '200x110'%>
+   		<% end %>
+	<% end %>
+</div>
+
+<div class="saerch-item">
+	<%= search_form_for(@search, method: :get)  do |f| %>
+		<%= button_tag type: :submit do %>
+			<%= f.hidden_field :genre_name_eq, value:"猫" %>
+   			<%= image_tag "nekoform.jpg",size: '200x110'%>
+   		<% end %>
+	<% end %>
+	</div>
+
+	<div class="saerch-item">
+	<%= search_form_for(@search, method: :get)  do |f| %>
+		<%= button_tag type: :submit do %>
+			<%= f.hidden_field :genre_name_eq, value:"インコ" %>
+   			<%= image_tag "inkoform.jpg",size: '200x110'%>
+   		<% end %>
+	<% end %>
+	</div>
+
+
+
+</div>
+
+
+
+	<div id="pictures-flex">
+		<%= render partial: 'picture', collection: @pictures %>
+		<div class="page-none">
+		<%= paginate @pictures %>
+		</div>
+	</div>
+</div>
+<div class="page-load">
+	<%= image_tag "load.gif",size:'30x30' %>
 </div>

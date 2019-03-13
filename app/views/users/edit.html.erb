@@ -1,25 +1,33 @@
-<%= form_for(@user) do |f| %>
-<div class="field">
-	<%= f.label :name %>
-	<%= f.text_field :name %>
+<div class="container">
+	<div class="row" style="margin-top: 70px;">
+    	<div class="main col-md-offset-3 col-md-6">
+    		<%= form_for(@user) do |f| %>
+	    		<div class="panel panel-default">
+	    			<div class="panel-heading">プロフィール編集フォーム（ユーザネームのみ必須）
+	    			</div>
+	    			<div class="panel-body">
+						<div class="field">
+							<%= f.label :ユーザネーム %>
+							<%= f.text_field :name, class: "form-control" %>
+						</div>
+						<div class="field">
+							<%= f.label :性別 %>
+							<%= f.select :gender, [["男"], ["女"]],{include_blank: "指定なし"}, class: "form-control" %>
+						</div>
+						<div class="field">
+							<%= f.label :プロフィール画像 %>
+							<%= f.file_field :avatar_image,accept: 'image/jpeg,image/gif,image/png', class: "form-control" %>
+						</div>
+						<div class="field">
+							<%= f.label :自己紹介 %>
+							<%= f.text_area :introduce , class: "form-control",rows: "7",placeholder:"xxx文字まで"%>
+						</div>
+					</div>
+	    		</div>
+	    		<div class="actions row">
+	    			<%= f.submit "変更を反映する", class: "btn col-md-offset-3 col-md-6",style: "background-color:black; color:white;" %>
+	    		</div>
+    		<% end %>
+    	</div>
+   	</div>
 </div>
-
-<div class="field">
-	<%= f.label :gender %>
-	<%= f.text_field :gender %>
-</div>
-
-<div class="field">
-	<%= f.label :avatar_image %>
-	<%= f.file_field :avatar_image,accept: 'image/jpeg,image/gif,image/png' %>
-</div>
-
-<div class="field">
-	<%= f.label :introduce %>
-	<%= f.text_area :introduce %>
-</div>
-
-<div class="actions">
-	<%= f.submit %>
-</div>
-<% end %>

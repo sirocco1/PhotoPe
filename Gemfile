@@ -71,3 +71,4 @@ gem 'mini_magick'
 gem 'font-awesome-rails'
 gem "jquery-turbolinks"
 gem "kaminari"
+gem 'ransack'

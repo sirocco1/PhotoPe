@@ -1,7 +1,9 @@
 class PicturesController < ApplicationController
 
   def index
-    @pictures = Picture.all.order(created_at: "desc")
+    @search = Picture.page(params[:page]).ransack(params[:q])
+    @pictures = @search.result.order(created_at: "desc")
+    # @pictures = Picture.page(params[:page]).order(created_at: "desc")
   end
 
   def new

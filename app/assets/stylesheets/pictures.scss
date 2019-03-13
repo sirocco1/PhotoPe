@@ -7,7 +7,7 @@
 	width: 900px;
 	margin: 0 auto;
 }
-.pictures-flex {
+#pictures-flex {
 	display: flex;
 	flex-wrap: wrap;
 }
@@ -15,4 +15,26 @@
 .picture-item {
 	width: 220px;
 	text-align: center;
+	color: gray;
 }
+
+.saerch-flex {
+	display: flex;
+	padding-top: 15px;
+	padding-bottom: 20px;
+	border-bottom: 1px dashed red;
+}
+.saerch-item {
+	width: 220px;
+	text-align: center;
+}
+/*button_tagのデフォルトcssをリセット*/
+button{
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        outline: none;
+        padding: 0;
+        appearance: none;
+}
+/*button_tagのデフォルトcssをリセット*/
