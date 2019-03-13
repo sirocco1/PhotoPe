@@ -20,5 +20,11 @@
       <span>いいね</span>
       <span class="item-value"><%=link_to "#{@favorite_pictures.count}", favorites_user_path(@user.id) %></span>
     </li>
+       <li class="menu-item">
+        <%= link_to "プロフィールを編集",edit_user_path, class: "btn btn-default",style:"margin-left:200px; color:#777; border-radius: 30px; position: relative; top:-11px;" %>
+        </li>
   </ul>
+
+
+
 </div>
