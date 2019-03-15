@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 /*投稿一覧画面*/
-.index-container {
+.picture-container {
 	width: 900px;
 	margin: 0 auto;
 }
@@ -11,13 +11,11 @@
 	display: flex;
 	flex-wrap: wrap;
 }
-
 .picture-item {
 	width: 220px;
 	text-align: center;
 	color: gray;
 }
-
 .saerch-flex {
 	display: flex;
 	padding-top: 15px;
@@ -38,3 +36,29 @@ button{
         appearance: none;
 }
 /*button_tagのデフォルトcssをリセット*/
+/*投稿詳細画面*/
+.detail-flex {
+	display: flex;
+	flex-wrap: wrap;
+}
+.picture-right {
+	padding-left: 20px;
+	width: 400px;
+}
+.picture-header {
+	height: 100px;
+	display: inline-flex;
+	align-items: center;
+}
+.postname {
+	padding-left: 10px;
+}
+.picture-description {
+	height: 150px;
+	background-color: red;
+}
+.picture-comment {
+	height: 190px;
+	background-color: blue;
+	margin-top: 10px;
+}

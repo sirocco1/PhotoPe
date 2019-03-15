@@ -1,10 +1,12 @@
 <div class="picture-item">
 	<span><%=  time_ago_in_words(picture.created_at)%>前 / <%= picture.genre.name %></span>
 		<% if picture.image? %>
-  			<% if picture.image.file.content_type.include?('image/') %>
-    			<%= image_tag picture.image.url(:thumb),size: '200x200' %>
-  			<% else %>
-    			<%= video_tag picture.image.url,size: '200x200',controls: true, autobuffer: true %>
+			<%= link_to picture_path(picture.id),data: {"turbolinks" => false} do %>
+  				<% if picture.image.file.content_type.include?('image/') %>
+    				<%= image_tag picture.image.url(:thumb),size: '200x200'%>
+  				<% else %>
+    				<%= video_tag picture.image.url,size: '200x200',controls: true, autobuffer: true %>
+  				<% end %>
   			<% end %>
-		<% end %>
+  		<% end %>
 </div>

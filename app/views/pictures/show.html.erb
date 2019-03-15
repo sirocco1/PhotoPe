@@ -1,2 +1,34 @@
-<h1>Pictures#show</h1>
-<p>Find me in app/views/pictures/show.html.erb</p>
+<div class="picture-container" style="padding-top:25px;">
+	<div class="detail-flex">
+
+			<% if @picture.image? %>
+	<% if @picture.image.file.content_type.include?('image/') %>
+    	<%= image_tag @picture.image.url(:thumb),size: '500x500'%>
+  	<% else %>
+    	<%= video_tag @picture.image.url,size: '500x500',controls: true, autobuffer: true %>
+  	<% end %>
+<% end %>
+<div class="picture-right">
+	<div class="picture-header">
+	<%= image_tag @picture.user.avatar_image.url,class: "avatar-image",size:'90x90' %>
+	<strong class="postname"><%= @picture.user.name %></strong>
+	</div>
+		<div class="picture-description">
+			<span></span>
+			<p><%= @picture.description %></p>
+	</div>
+			<div class="picture-comment">
+	</div>
+</div>
+
+</div>
+</div>
+
+
+<%= @picture.title %>
+<%= @picture.description %>
+<%= @picture.genre.name %>
+
+
+<%= image_tag @picture.user.avatar_image.url,class: "avatar-image" %>
+<%= @picture.user.name %>
