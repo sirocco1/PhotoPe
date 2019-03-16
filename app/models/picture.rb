@@ -2,6 +2,7 @@ class Picture < ApplicationRecord
 	mount_uploader :image, ImageUploader
 	belongs_to :user
 	belongs_to :genre
+	has_many :comments, dependent: :destroy
 	has_many :favorites
 	validate :image_size
 
@@ -10,7 +11,6 @@ class Picture < ApplicationRecord
 	end
 
 	private
-	# 独自のバリデーションを定義 / アップロードされた画像サイズを制限
 	def image_size
 		if image.size > 5.megabytes
 			errors.add(:image, "should be less than 5MB")

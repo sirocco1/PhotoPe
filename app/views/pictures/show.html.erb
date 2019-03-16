@@ -1,34 +1,38 @@
 <div class="picture-container" style="padding-top:25px;">
 	<div class="detail-flex">
-
-			<% if @picture.image? %>
-	<% if @picture.image.file.content_type.include?('image/') %>
-    	<%= image_tag @picture.image.url(:thumb),size: '500x500'%>
-  	<% else %>
-    	<%= video_tag @picture.image.url,size: '500x500',controls: true, autobuffer: true %>
-  	<% end %>
-<% end %>
-<div class="picture-right">
-	<div class="picture-header">
-	<%= image_tag @picture.user.avatar_image.url,class: "avatar-image",size:'90x90' %>
-	<strong class="postname"><%= @picture.user.name %></strong>
-	</div>
-		<div class="picture-description">
-			<span></span>
-			<p><%= @picture.description %></p>
-	</div>
+		<% if @picture.image? %>
+			<% if @picture.image.file.content_type.include?('image/') %>
+    			<%= image_tag @picture.image.url(:thumb),size: '500x500'%>
+  			<% else %>
+    			<%= video_tag @picture.image.url,size: '500x500',controls: true, autobuffer: true %>
+  			<% end %>
+		<% end %>
+		<div class="picture-right">
+			<div class="picture-header">
+				<%= link_to user_path(@picture.user_id) do %>
+				<%= image_tag @picture.user.avatar_image.url,class: "avatar-image",size:'75x75' %>
+				<% end %>
+				<%= link_to user_path(@picture.user_id) do %>
+				<strong class="postname"><%= @picture.user.name %></strong>
+				<% end %>
+			</div>
+			<div class="picture-description">
+				<span>投稿内容:</span>
+				<p><%= @picture.description %></p>
+			</div>
 			<div class="picture-comment">
+				<span>コメント一覧:</span>
+				<div id="comments_area">
+      				<%= render partial: 'comments/index', locals: { comments: @comments } %>
+    			</div>
+			</div>
+		</div>
 	</div>
 </div>
 
+<div>
+    <h4>コメント</h4>
+      <% if user_signed_in? %>
+      <%= render partial: 'comments/form', locals: { comment: @comment, picture: @picture } %>
+      <% end %>
 </div>
-</div>
-
-
-<%= @picture.title %>
-<%= @picture.description %>
-<%= @picture.genre.name %>
-
-
-<%= image_tag @picture.user.avatar_image.url,class: "avatar-image" %>
-<%= @picture.user.name %>
