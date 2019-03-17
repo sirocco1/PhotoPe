@@ -1,6 +1,6 @@
 <div class="position-change">
-	<%= image_tag @user.avatar_image.url,class: "avatar-image" %>
-      <span style="color:#657786;">ユーザネーム (<%= @user.gender %>)</span>
+	<%= image_tag @user.avatar_image.url,class: "avatar-image",size:'250x225' %>
+      <span style="color:#657786;">ユーザネーム <%= @user.gender %></span>
       <h4><%= @user.name %></h4>
       <p><%= @user.introduce %></p>
 </div>

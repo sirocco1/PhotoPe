@@ -3,6 +3,7 @@ class PicturesController < ApplicationController
   def index
     @search = Picture.page(params[:page]).ransack(params[:q])
     @pictures = @search.result.order(created_at: "desc")
+    # .includes(:user)
   end
 
   def new
@@ -19,6 +20,9 @@ class PicturesController < ApplicationController
 
   def show
     @picture = Picture.find(params[:id])
+    @favorites = @picture.favorites
+    @comment = Comment.new
+    @comments = @picture.comments
   end
 
   def destroy

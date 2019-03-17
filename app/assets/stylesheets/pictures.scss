@@ -15,6 +15,7 @@
 	width: 220px;
 	text-align: center;
 	color: gray;
+	margin-top:10px;
 }
 .saerch-flex {
 	display: flex;
@@ -46,19 +47,31 @@ button{
 	width: 400px;
 }
 .picture-header {
-	height: 100px;
+	height: 80px;
+	width: 380px;
 	display: inline-flex;
 	align-items: center;
+	border: double;
 }
 .postname {
 	padding-left: 10px;
+	color: black;
 }
 .picture-description {
-	height: 150px;
-	background-color: red;
+	height: 120px;
+	font-size: 12px;
+	overflow: scroll;
+    border: outset;
+    margin-top: 5px;
 }
 .picture-comment {
-	height: 190px;
-	background-color: blue;
-	margin-top: 10px;
+	height: 273px;
+	font-size: 12px;
+	margin-top: 5px;
+    border: outset;
+    overflow: scroll;
 }
+.comment-form {
+	text-align: center;
+}
+/*投稿詳細画面ここまで*/

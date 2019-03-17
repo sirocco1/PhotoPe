@@ -9,3 +9,5 @@ $(document).ready () ->
     path: '.next a'
     append: '.picture-item'
     history: false
+    prefill: true
+    status: '.page-load-status'
