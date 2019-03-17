@@ -8,7 +8,6 @@
             <div class="post-container">
                 <% @pictures.each do |picture| %>
                     <div class="post-item">
-                        <span style='color:gray;'><%=  time_ago_in_words(picture.created_at)%>前</span>
                         <% if picture.image? %>
                             <% if picture.image.file.content_type.include?('image/') %>
                                 <%= link_to picture_path(picture.id) do %>

@@ -1,8 +1,8 @@
 <%= form_with(model: [picture, comment] ) do |form| %>
   <div>
-    <%= form.text_area :content %>
+    <%= form.text_area :content,style: 'width:500px;height:60px;' %>
   </div>
   <div class="actions">
-    <%= form.submit "コメントをする" %>
+    <%= form.submit "投稿にコメントをする",style:'background-color:#8a6d3b; color:white; padding:3px 10px; border-radius: 30px; margin-top:5px;' %>
   </div>
 <% end %>

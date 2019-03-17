@@ -15,6 +15,7 @@
 	width: 220px;
 	text-align: center;
 	color: gray;
+	margin-top:10px;
 }
 .saerch-flex {
 	display: flex;
@@ -64,8 +65,13 @@ button{
     margin-top: 5px;
 }
 .picture-comment {
-	height: 230px;
+	height: 273px;
 	font-size: 12px;
 	margin-top: 5px;
     border: outset;
+    overflow: scroll;
 }
+.comment-form {
+	text-align: center;
+}
+/*投稿詳細画面ここまで*/

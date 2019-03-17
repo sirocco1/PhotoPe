@@ -26,13 +26,18 @@
       				<%= render partial: 'comments/index', locals: { comments: @comments } %>
     			</div>
 			</div>
+			<div class="fabo-style">
+      			<div id="favo_buttons_<%= @picture.id %>">
+          			<%= render partial: 'favorites/post', locals: { picture: @picture} %>
+      			</div>
+      			<%= render 'pictures/favorite' %>
+  			</div>
 		</div>
+	</div>
+	<div class="comment-form">
+      <% if user_signed_in? %>
+      	<%= render partial: 'comments/form', locals: { comment: @comment, picture: @picture } %>
+      <% end %>
 	</div>
 </div>
 
-<div>
-    <h4>コメント</h4>
-      <% if user_signed_in? %>
-      <%= render partial: 'comments/form', locals: { comment: @comment, picture: @picture } %>
-      <% end %>
-</div>

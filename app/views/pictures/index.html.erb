@@ -32,11 +32,16 @@
 	</div>
 	<div id="pictures-flex">
 		<%= render partial: 'picture', collection: @pictures %>
-		<div class="page-none">
+
+	</div>
+			<div style="display: none;">
 		<%= paginate @pictures %>
 		</div>
-	</div>
 </div>
-<div class="page-load">
-	<%= image_tag "load.gif",size:'30x30' %>
+<div class="page-load-status" style="display: none;text-align:center;">
+	<div class="infinite-scroll-request">
+		<%= image_tag "load.gif",size:'30x30' %>
+	</div>
+	<p class="infinite-scroll-last">これ以上記事がありません</p>
+	<p class="infinite-scroll-error">読み込むページがありません</p>
 </div>
