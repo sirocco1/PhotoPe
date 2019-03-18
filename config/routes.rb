@@ -4,11 +4,14 @@ Rails.application.routes.draw do
 
   resources :genres, only: [:create]
 
+  get 'users', to: 'users#homes'
+
   resources :users do
   	resource :relationships, only: [:create, :destroy]
   	get :follows, on: :member
   	get :followers, on: :member
     get :favorites, on: :member
+    get :homes, on: :member
   end
 
   resources :pictures do

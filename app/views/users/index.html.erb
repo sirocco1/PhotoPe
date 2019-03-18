@@ -1,7 +1,7 @@
 <%= link_to "aa",pictures_path,data: {"turbolinks" => false} %>
 
 <h1>Users#index</h1>
-<% @users.each do |user| %>
+<% @find_users.each do |user| %>
 <table>
 <tr>
 	<th><%= link_to user.name, user%>（名前）</th>

@@ -1,13 +1,43 @@
-<header id="header" class="header">
-	<%= render 'pictures/new' %>
-
-	<ul class="nav navbar-nav navbar-right">
+<header id="header" class="nav navbar-nav">
+	<ul class="nav navbar-nav navbar-left" style="margin-left: 150px;">
 		<% if user_signed_in? %>
-		    <li><%= "#{current_user.name} 様" %></li>
-			<li><%= link_to ' ログアウト', destroy_user_session_path, method: :delete, class: 'glyphicon glyphicon-log-out' %></li>
-        <% else %>
-        	<li><%= link_to ' 新規登録', new_user_registration_path, class: 'glyphicon glyphicon-edit' %></li>
-        	<li><%= link_to ' ログイン', new_user_session_path, class: 'glyphicon glyphicon-log-in' %></li>
+				<li>
+		<%= link_to ' ログアウト', destroy_user_session_path, method: :delete, class: 'glyphicon glyphicon-log-out' %>
+		</li>
+		<span class="home-link">
+		<%= link_to 'PhotoPe',homes_user_path(current_user),style: 'color:#9810f9;'%>
+		</span>
+		</ul>
+
+
+			<ul class="nav navbar-nav navbar-right" style="margin-right: 150px;">
+
+		<li style="margin-right: 15px;">
+			<%= search_form_for @find, url: users_path do |f| %>
+<%= f.text_field :name_cont ,placeholder: 'ユーザ検索',style:'border-radius:30px; padding-left:15px;margin-top:13px;' %>
+<%= button_tag type: :submit do %>
+ <i class="fas fa-search" style="color:white;"></i>
+ <% end %>
+  <% end %>
+   </li>
+
+
+		<div style="float:left;margin-top: 6px;">
+			<%= link_to user_path(current_user) do %>
+	<%= image_tag current_user.avatar_image.url,class: "avatar-image",size:'35x35'%>
+	<% end %>
+	</div>
+	<div style="float:left;margin-top: 6px;">
+	<%= render 'pictures/new' %>
+		</div>
+
+        	</ul>
+
+
+		 <% else %>
+      <%= link_to ' 新規登録', new_user_registration_path, class: 'glyphicon glyphicon-edit' %>
+        	<%= link_to ' ログイン', new_user_session_path, class: 'glyphicon glyphicon-log-in' %>
         <% end %>
-    </ul>
+
+
 </header>
