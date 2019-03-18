@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-
+  before_action :screen_user, only: [:homes, :edit]
   def index
-  	@users = User.all
+  	# app_controllerに記述
   end
 
   def show
@@ -43,9 +43,17 @@ class UsersController < ApplicationController
     @favorite_pictures = @user.favorite_pictures.order("favorites.created_at desc")
   end
 
+  def homes
+  end
+
   private
   def user_params
     params.require(:user).permit(:name, :introduce, :avatar_image, :gender)
+  end
+  def screen_user
+    unless params[:id].to_i == current_user.id
+      redirect_to  homes_user_path(current_user)
+    end
   end
 
 end

@@ -30,6 +30,9 @@ header {
   	height: 50px;
   	z-index:1070;
 }
+a:hover {
+	text-decoration: none;
+}
 /*Login & Signup Form (Start)*/
 .main-container {
 	margin: 0 auto;
@@ -132,5 +135,6 @@ header {
     height: 30px;
 }
 .home-link {
-	color:white;
+    font-size: 30px;
+    font-family: cursive;
 }

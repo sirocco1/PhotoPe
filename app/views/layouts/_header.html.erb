@@ -4,7 +4,9 @@
 				<li>
 		<%= link_to ' ログアウト', destroy_user_session_path, method: :delete, class: 'glyphicon glyphicon-log-out' %>
 		</li>
-		<span class="home-link">PhotoPe</span>
+		<span class="home-link">
+		<%= link_to 'PhotoPe',homes_user_path(current_user),style: 'color:#9810f9;'%>
+		</span>
 		</ul>
 
 
@@ -12,7 +14,7 @@
 
 		<li style="margin-right: 15px;">
 			<%= search_form_for @find, url: users_path do |f| %>
-<%= f.text_field :name_cont ,placeholder: '検索',style:'border-radius:30px; padding-left:15px;margin-top:13px;' %>
+<%= f.text_field :name_cont ,placeholder: 'ユーザ検索',style:'border-radius:30px; padding-left:15px;margin-top:13px;' %>
 <%= button_tag type: :submit do %>
  <i class="fas fa-search" style="color:white;"></i>
  <% end %>

@@ -7,7 +7,7 @@ class User < ApplicationRecord
   mount_uploader :avatar_image, AvatarImageUploader
   has_many :pictures, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :favorites
+  has_many :favorites, dependent: :destroy
   has_many :favorite_pictures, through: :favorites, source: :picture
   #フォロー/フォロワーの記述
   has_many :active_relationships, class_name: "Relationship", foreign_key: :following_id
