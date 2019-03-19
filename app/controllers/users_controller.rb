@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :screen_user, only: [:homes, :edit]
+  before_action :screen_user, except: [:index]
   def index
   	# app_controllerに記述
   end
@@ -44,6 +44,16 @@ class UsersController < ApplicationController
   end
 
   def homes
+    @user = User.find(params[:id])
+    @users = @user.followings
+    @pictures = []
+          @users.each do |user|
+            pictures = Picture.where(user_id: user.id).order(created_at: :desc)
+            @pictures.concat(pictures)
+          end
+          current = Picture.where(user_id: current_user.id).order(created_at: :desc)
+          @pictures.concat(current)
+    @pictures = @pictures.sort_by{|picture| picture.created_at}.reverse
   end
 
   private
