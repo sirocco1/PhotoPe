@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :screen_user, except: [:index]
+  before_action :screen_user, except: [:index, :show]
   def index
   	# app_controllerに記述
   end
