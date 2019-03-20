@@ -1,2 +1,53 @@
-
-<h1>aaaaaaaaa</h1>
+<div class="homes-container">
+	<div class="homes-heading">
+		<%= link_to user_path(current_user) do %>
+			<%= image_tag current_user.avatar_image.url,class: "avatar-image",size:'150x150' %>
+			<strong style="color:gray;"><p><%= current_user.name %></p></strong>
+		<% end %>
+		<h2 class="homes-name">
+			<span style="font-size: 40px; color:gray">〜</span>
+			TIME<i class="fas fa-paw"></i>LINE
+			<span style="font-size: 40px; color:gray">〜</span>
+		</h2>
+	</div>
+	<% @pictures.each do |picture| %>
+		<div class="homes-item">
+			<div class="item-head">
+				<%= link_to user_path(picture.user_id) do %>
+					<%= image_tag picture.user.avatar_image.url,class: "avatar-image",size:'50x50' %>
+				<% end %>
+				<strong style="padding-left: 5px;"><%= picture.user.name %></strong>
+			</div>
+			<% if picture.image? %>
+			    <%= link_to picture_path(picture.id),data: {"turbolinks" => false} do %>
+			      	<% if picture.image.file.content_type.include?('image/') %>
+			    		<%= image_tag picture.image.url(:thumb),size: '400x400',style:'border: ridge; border-color: #cba3d8;' %>
+			  		<% else %>
+			    		<%= video_tag picture.image.url,size: '400x400',controls: true, autobuffer: true,style:'border: ridge;' %>
+			  		<% end %>
+			  	<% end %>
+			<% end %>
+			<div class="fabo-style">
+                <div id="favo_buttons_<%= picture.id %>">
+                    <!-- <%#= render partial: 'favorites/post', locals: { picture: picture} %>-->
+                    <% if picture.favorited_by?(current_user) %>
+    					<span style='color:gray;'><%=  time_ago_in_words(picture.created_at)%>前  (<%= picture.created_at.strftime("%Y-%m-%d %H:%M") %>)</span>
+    					<%=link_to "/pictures/#{picture.id}/favorites", method: :delete,remote: true do %>
+        					<span class="icolor1"><i class="fas fa-heart fa-lg"></i>  <%= picture.favorites.count %></span>
+    					<% end %>
+    					<span style="color:gray;"><i class="far fa-comments fa-lg"></i>  <%= picture.comments.count %></span>
+					<% else %>
+    					<span style='color:gray;'><%=  time_ago_in_words(picture.created_at)%>前  (<%= picture.created_at.strftime("%Y-%m-%d %H:%M") %>)</span>
+    					<%=link_to "/pictures/#{picture.id}/favorites", method: :post,remote: true do %>
+        					<span class="icolor0"><i class="far fa-heart fa-lg"></i>  <%= picture.favorites.count %></span>
+    					<% end %>
+    						<span style="color:gray;"><i class="far fa-comments fa-lg"></i>  <%= picture.comments.count %></span>
+					<% end %>
+                </div>
+            </div>
+            <div class="item-description">
+            	<span style="color:gray;font-size: 14px;">内容:</span> <%= picture.description %></span>
+            </div>
+		</div>
+	<% end %>
+</div>

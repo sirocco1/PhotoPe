@@ -1,43 +1,50 @@
 <header id="header" class="nav navbar-nav">
-	<ul class="nav navbar-nav navbar-left" style="margin-left: 150px;">
-		<% if user_signed_in? %>
-				<li>
-		<%= link_to ' ログアウト', destroy_user_session_path, method: :delete, class: 'glyphicon glyphicon-log-out' %>
-		</li>
-		<span class="home-link">
-		<%= link_to 'PhotoPe',homes_user_path(current_user),style: 'color:#9810f9;'%>
-		</span>
+	<% if user_signed_in? %>
+		<ul class="nav navbar-nav navbar-left" style="margin-left: 150px;">
+			<li style="margin-left: 50px;margin-top: 13px;">
+				<div class="dropdown">
+					<button class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+					<i class="fas fa-cog fa-2x" style="color:white;"></i>
+    				<span class="caret"></span>
+  					</button>
+  					<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+  						<li><%= link_to ' ログアウト', destroy_user_session_path, method: :delete, class: 'glyphicon glyphicon-log-out' %></li>
+  					</ul>
+				</div>
+			</li>
+			<div style="float:left;margin-top: 4px;margin-left:30px;">
+				<%= link_to pictures_path,data: {"turbolinks" => false} do %><i class="far fa-images fa-3x" style="color:#b0f90b;"></i><% end %>
+			</div>
+			<div style="float:left;margin-top: 4px;margin-left:30px;">
+				<%= link_to users_path do %><i class="fas fa-users fa-3x" style="color:white;"></i><% end %>
+			</div>
+			<div style="float:left;margin-left: 250px;">
+				<span class="home-link">
+					<%= link_to 'PhotoPe',homes_user_path(current_user),style: 'color:#9810f9;'%>
+				</span>
+			</div>
+		</ul>
+		<ul class="nav navbar-nav navbar-right" style="margin-right: 150px;">
+			<li style="margin-right: 15px;">
+				<%= search_form_for @find, url: users_path do |f| %>
+					<%= f.text_field :name_cont ,placeholder: 'ユーザー検索',style:'border-radius:30px; padding-left:15px;margin-top:13px;' %>
+					<%= button_tag type: :submit do %>
+ 						<i class="fas fa-search" style="color:white;"></i>
+ 					<% end %>
+  				<% end %>
+   			</li>
+   			<div style="float:left;margin-top: 6px;">
+				<%= link_to user_path(current_user) do %>
+					<%= image_tag current_user.avatar_image.url,class: "avatar-image",size:'35x35'%>
+				<% end %>
+			</div>
+			<div style="float:left;margin-top: 6px;">
+				<%= render 'pictures/new' %>
+			</div>
 		</ul>
 
-
-			<ul class="nav navbar-nav navbar-right" style="margin-right: 150px;">
-
-		<li style="margin-right: 15px;">
-			<%= search_form_for @find, url: users_path do |f| %>
-<%= f.text_field :name_cont ,placeholder: 'ユーザ検索',style:'border-radius:30px; padding-left:15px;margin-top:13px;' %>
-<%= button_tag type: :submit do %>
- <i class="fas fa-search" style="color:white;"></i>
- <% end %>
-  <% end %>
-   </li>
-
-
-		<div style="float:left;margin-top: 6px;">
-			<%= link_to user_path(current_user) do %>
-	<%= image_tag current_user.avatar_image.url,class: "avatar-image",size:'35x35'%>
-	<% end %>
-	</div>
-	<div style="float:left;margin-top: 6px;">
-	<%= render 'pictures/new' %>
-		</div>
-
-        	</ul>
-
-
-		 <% else %>
-      <%= link_to ' 新規登録', new_user_registration_path, class: 'glyphicon glyphicon-edit' %>
+		<% else %>
+      		<%= link_to ' 新規登録', new_user_registration_path, class: 'glyphicon glyphicon-edit' %>
         	<%= link_to ' ログイン', new_user_session_path, class: 'glyphicon glyphicon-log-in' %>
         <% end %>
-
-
 </header>
