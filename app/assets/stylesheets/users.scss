@@ -106,8 +106,40 @@
     margin-top: 10px;
 }
 /*ユーザ一覧&検索画面ここまで*/
+/*タイムライン画面*/
 .homes-container {
 	margin: 0 auto;
-	width: 1000px;
+	width: 1080px;
 	padding-top: 25px;
+	display: flex;
+	flex-wrap: wrap;
 }
+.homes-heading {
+	width: 100%;
+	text-align: center;
+}
+.homes-name {
+	font-size: 50px;
+    font-family: fantasy;
+    letter-spacing: 0.4em;
+}
+.homes-item {
+	width:500px;
+	padding: 0 50px;
+	margin: 0px 20px 30px 20px;
+	border: ridge;
+}
+.item-head {
+	padding: 2px 0 2px 10px;
+	width: 400px;
+	display: inline-flex;
+    align-items: center;
+}
+.item-description {
+	width: 400px;
+	height: 50px;
+	margin-bottom: 5px;
+	overflow: scroll;
+	font-size: 12px;
+}
+/*タイムライン画面ここまで*/

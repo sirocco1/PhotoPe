@@ -31,7 +31,7 @@
                                   <% end %>
                                   <span style="color:gray;"><i class="far fa-comments fa-lg"></i>  <%= picture.comments.count %></span>
                                 <% else %>
-                                  <span style='color:gray;'><%=  time_ago_in_words(picture.created_at)%>前  </span>
+                                  <span style='color:gray;'><%=  time_ago_in_words(picture.created_at)%>前 </span>
                                     <%=link_to "/pictures/#{picture.id}/favorites", method: :post,remote: true do %>
                                       <span class="icolor0"><i class="far fa-heart fa-lg"></i>  <%= picture.favorites.count %></span>
                                     <% end %>

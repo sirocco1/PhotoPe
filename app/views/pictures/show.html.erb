@@ -2,9 +2,9 @@
 	<div class="detail-flex">
 		<% if @picture.image? %>
 			<% if @picture.image.file.content_type.include?('image/') %>
-    			<%= image_tag @picture.image.url(:thumb),size: '500x500'%>
+    			<%= image_tag @picture.image.url(:thumb),size: '500x500',style:'border: ridge;'%>
   			<% else %>
-    			<%= video_tag @picture.image.url,size: '500x500',controls: true, autobuffer: true %>
+    			<%= video_tag @picture.image.url,size: '500x500',controls: true, autobuffer: true,style:'border: ridge;' %>
   			<% end %>
 		<% end %>
 		<div class="picture-right">
@@ -28,7 +28,20 @@
 			</div>
 			<div class="fabo-style">
       			<div id="favo_buttons_<%= @picture.id %>">
-          			<%= render partial: 'favorites/post', locals: { picture: @picture} %>
+          		<!-- 	<%#= render partial: 'favorites/post', locals: { picture: @picture} %> -->
+          			<% if @picture.favorited_by?(current_user) %>
+    <span style='color:gray;'><%= @picture.created_at.strftime("%Y-%m-%d %H:%M") %> (<%=  time_ago_in_words(@picture.created_at)%>前)  </span>
+    <%=link_to "/pictures/#{@picture.id}/favorites", method: :delete,remote: true do %>
+        <span class="icolor1"><i class="fas fa-heart fa-lg"></i>  <%= @picture.favorites.count %></span>
+    <% end %>
+    <span style="color:gray;"><i class="far fa-comments fa-lg"></i>  <%= @picture.comments.count %></span>
+<% else %>
+    <span style='color:gray;'><%= @picture.created_at.strftime("%Y-%m-%d %H:%M") %> (<%=  time_ago_in_words(@picture.created_at)%>前)  </span>
+    <%=link_to "/pictures/#{@picture.id}/favorites", method: :post,remote: true do %>
+        <span class="icolor0"><i class="far fa-heart fa-lg"></i>  <%= @picture.favorites.count %></span>
+    <% end %>
+    <span style="color:gray;"><i class="far fa-comments fa-lg"></i>  <%= @picture.comments.count %></span>
+<% end %>
       			</div>
       			<%= render 'pictures/favorite' %>
   			</div>

@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :screen_user, except: [:index, :show]
   def index
-  	# app_controllerに記述
+  	# app_controllerに記述(ヘッダーに検索機能を表示している為)
   end
 
   def show
