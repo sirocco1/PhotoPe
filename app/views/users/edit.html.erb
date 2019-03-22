@@ -1,26 +1,28 @@
 <div class="container">
 	<div class="row" style="margin-top: 70px;">
     	<div class="main col-md-offset-3 col-md-6">
+    		<p id="notice" style="color: blue;"><%= notice %></p>
+    		<%= render 'layouts/errors', obj: @user %>
     		<%= form_for(@user) do |f| %>
 	    		<div class="panel panel-default">
-	    			<div class="panel-heading">プロフィール編集フォーム（ユーザネームのみ必須）
+	    			<div class="panel-heading">プロフィール編集
 	    			</div>
 	    			<div class="panel-body">
 						<div class="field">
-							<%= f.label :ユーザネーム %>
+							<%= f.label :ユーザネーム %><span style="color:gray;font-size:12px;"> （必須: 2〜20文字以内）</span>
 							<%= f.text_field :name, class: "form-control" %>
 						</div>
 						<div class="field">
-							<%= f.label :性別 %>
+							<%= f.label :性別 %><span style="color:gray;font-size:12px;"> （任意）</span>
 							<%= f.select :gender, [["男"], ["女"]],{include_blank: "指定なし"}, class: "form-control" %>
 						</div>
 						<div class="field">
-							<%= f.label :プロフィール画像 %>
+							<%= f.label :プロフィール画像 %><span style="color:gray;font-size:12px;"> （任意）</span>
 							<%= f.file_field :avatar_image,accept: 'image/jpeg,image/gif,image/png', class: "form-control" %>
 						</div>
 						<div class="field">
-							<%= f.label :自己紹介 %>
-							<%= f.text_area :introduce , class: "form-control",rows: "7",placeholder:"xxx文字まで"%>
+							<%= f.label :自己紹介 %><span style="color:gray;font-size:12px;">（任意）　<span id="introducelength">/300文字以内</span></span>
+							<%= f.text_area :introduce , class: "form-control",rows: "7",onkeyup: "UserLength(value);"%>
 						</div>
 					</div>
 	    		</div>

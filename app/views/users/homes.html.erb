@@ -1,4 +1,6 @@
+
 <div class="homes-container">
+	<p id="notice" style="margin: 0 auto;padding-bottom: 15px;color:red;"><%= notice %></p>
 	<div class="homes-heading">
 		<%= link_to user_path(current_user) do %>
 			<%= image_tag current_user.avatar_image.url,class: "avatar-image",size:'150x150' %>
@@ -21,7 +23,7 @@
 			<% if picture.image? %>
 			    <%= link_to picture_path(picture.id),data: {"turbolinks" => false} do %>
 			      	<% if picture.image.file.content_type.include?('image/') %>
-			    		<%= image_tag picture.image.url(:thumb),size: '400x400',style:'border: ridge; border-color: #cba3d8;' %>
+			    		<%= image_tag picture.image.url(:thumb),size: '400x400',style:'border: ridge; border-color: #c3d5f1;' %>
 			  		<% else %>
 			    		<%= video_tag picture.image.url,size: '400x400',controls: true, autobuffer: true,style:'border: ridge;' %>
 			  		<% end %>

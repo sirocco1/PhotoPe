@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
   before_action :screen_user, except: [:index, :show]
   def index
   	# app_controllerに記述(ヘッダーに検索機能を表示している為)
@@ -17,7 +18,7 @@ class UsersController < ApplicationController
   def update
       @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to user_path(@user), notice: "successfully updated user!"
+       redirect_to edit_user_path, notice: "変更が保存されました!"
     else
       render "edit"
     end

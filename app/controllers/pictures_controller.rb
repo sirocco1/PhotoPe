@@ -14,8 +14,11 @@ class PicturesController < ApplicationController
 
   def create
     @picture = current_user.pictures.new(picture_params)
-    @picture.save
-    redirect_to new_picture_path, notice: "新規投稿が正常に完了しました"
+    if @picture.save
+      redirect_to homes_user_path(current_user), notice: "新規投稿が正常に完了しました。"
+    else
+      redirect_to homes_user_path(current_user), notice: "入力エラーが発生しています。投稿は失敗しました。"
+    end
   end
 
   def show
@@ -28,12 +31,12 @@ class PicturesController < ApplicationController
   def destroy
     picture = Picture.find(params[:id])
     picture.destroy
-    redirect_to new_picture_path, notice: "投稿が削除されました"
+    redirect_to homes_user_path(current_user), notice: "投稿が削除されました。"
   end
 
 private
   def picture_params
-    params.require(:picture).permit(:genre_id, :image, :title, :description)
+    params.require(:picture).permit(:genre_id, :image, :description)
   end
 
 end

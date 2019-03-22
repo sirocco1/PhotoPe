@@ -6,6 +6,9 @@ class ApplicationController < ActionController::Base
 		@find = User.ransack(params[:q])
   		@find_users = @find.result.page(params[:page]).per(300)
     end
+    def after_sign_in_path_for(resource)
+  		homes_user_path(resource)
+  	end
 
 	protected
  	  def configure_permitted_parameters

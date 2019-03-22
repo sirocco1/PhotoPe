@@ -17,3 +17,13 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
+
+function ShowLength( str ) {
+   document.getElementById("inputlength").innerHTML = str.length + "/100文字以内";
+}
+function UserLength( str ) {
+   document.getElementById("introducelength").innerHTML = str.length + "/300文字以内";
+}
+function PictureLength( str ) {
+   document.getElementById("descriptionlength").innerHTML = str.length + "/300文字以内";
+}

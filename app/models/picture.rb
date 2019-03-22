@@ -3,13 +3,14 @@ class Picture < ApplicationRecord
 	belongs_to :user
 	belongs_to :genre
 	has_many :comments, dependent: :destroy
-	has_many :favorites
+	has_many :favorites, dependent: :destroy
 	validate :image_size
-
+	validates :description, length: {maximum: 300}
+	validates :genre_id, presence: true
+	validates :image, presence: true
 	def favorited_by?(user)
 		favorites.where(user_id: user.id).exists?
 	end
-
 	private
 	def image_size
 		if image.size > 5.megabytes
