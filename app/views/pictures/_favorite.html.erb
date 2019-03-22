@@ -1,5 +1,5 @@
 <!-- いいねしてくれたユーザ一覧　モーダル表示-->
-<button type="button" id="btn1" data-toggle="modal" data-focus="true" data-target="#modal-favorite" style="background-color: #04ff00b5;color:white;padding:3px 10px;border-radius: 30px;float: right;position: relative;top: -10px;"><%= @favorites.count %>件のいいね!!</button>
+<button type="button" id="btn1" data-toggle="modal" data-focus="true" data-target="#modal-favorite" style="background-color: #04ff00b5;color:white;padding:3px 10px;border-radius: 30px;float: right;"><%= @favorites.count %>件のいいね!!</button>
 <div class="modal fade" id="modal-favorite" tabindex="-1" role="dialog"style="margin-top: 70px;">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -15,7 +15,7 @@
               <% end %>
               <div style="width:380px;">
                 <strong><%= favorite.user.name %></strong>
-                <p style="font-size: 12px;"><%= favorite.user.introduce %></p>
+                <p style="font-size: 12px;"><%= truncate(favorite.user.introduce, length: 95) %></p>
               </div>
               <div style="padding-top:10px;">
                 <% if current_user != favorite.user %>

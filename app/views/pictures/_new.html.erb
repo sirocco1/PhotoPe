@@ -20,8 +20,8 @@
               <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png,video/*',class: "form-control",placeholder: "必須" %>
             </div>
             <div class="form-group">
-              <%= f.label :本文 %><span style="color:gray;font-size:12px;">　（任意:300文字以内）</span>
-              <%= f.text_area :description,class: "form-control" %>
+              <%= f.label :本文 %><span style="color:gray;font-size:12px;">（任意）　<span id="descriptionlength">/300文字以内</span></span>
+              <%= f.text_area :description,class: "form-control",onkeyup: "PictureLength(value);" %>
             </div>
               <%= f.submit "投稿する", class: "btn btn-info form-control" %>
           <% end %>

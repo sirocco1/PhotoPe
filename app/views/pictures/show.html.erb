@@ -7,6 +7,7 @@
     			<%= video_tag @picture.image.url,size: '500x500',controls: true, autobuffer: true,style:'border: ridge;' %>
   			<% end %>
 		<% end %>
+
 		<div class="picture-right">
 			<div class="picture-header">
 				<%= link_to user_path(@picture.user_id) do %>
@@ -42,15 +43,27 @@
     <% end %>
     <span style="color:gray;"><i class="far fa-comments fa-lg"></i>  <%= @picture.comments.count %></span>
 <% end %>
+
+		    	<% if current_user == @picture.user %>
+      			<span class="dropdown">
+					<button class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+					<i class="fas fa-cog" style="color:gray;margin-left: 3px;"></i>
+  					</button>
+  					<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+  						<li style="font-size: 12px;"><%= link_to "・投稿を削除する", picture_path(@picture), method: :delete,"data-confirm" => "本当に投稿を削除しますか？"%></li>
+  					</ul>
+      			</span>
+      			<% end %>
+
+
+
       			</div>
       			<%= render 'pictures/favorite' %>
   			</div>
 		</div>
 	</div>
 	<div class="comment-form">
-      <% if user_signed_in? %>
       	<%= render partial: 'comments/form', locals: { comment: @comment, picture: @picture } %>
-      <% end %>
 	</div>
 </div>
 

@@ -31,7 +31,7 @@ class PicturesController < ApplicationController
   def destroy
     picture = Picture.find(params[:id])
     picture.destroy
-    redirect_to new_picture_path, notice: "投稿が削除されました"
+    redirect_to homes_user_path(current_user), notice: "投稿が削除されました。"
   end
 
 private
