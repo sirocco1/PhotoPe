@@ -5,8 +5,25 @@ ja:
         user:
           attributes:
             name:
-              blank: '空っす'
+              blank: "が入力されていません"
+              taken: "は既に使用されています"
+              too_short: "は%{count}文字以上、20文字以下に設定して下さい"
+              too_long: "は%{count}文字以下に設定して下さい"
+              invalid: "は有効でありません"
+              confirmation: "が内容とあっていません"
             email:
-              blank: '空っす'
+              blank: "が入力されていません"
+              taken: "は既に使用されています"
+              too_short: "は%{count}文字以上に設定して下さい"
+              too_long: "は%{count}文字以下に設定して下さい"
+              invalid: "は有効でありません"
+              confirmation: "が内容とあっていません"
             password:
-              blank: '空っす'
+              blank: "が入力されていません"
+              taken: "は既に使用されています"
+              too_short: "は%{count}文字以上に設定して下さい"
+              too_long: "は%{count}文字以下に設定して下さい"
+              invalid: "は有効でありません"
+              confirmation: "が内容とあっていません"
+            password_confirmation:
+              confirmation: "が内容とあっていません"
