@@ -16,16 +16,12 @@
               <%= f.collection_select(:genre_id, Genre.all, :id, :name) %>
             </div>
             <div class="form-group">
-              <%= f.label :ペットor動物の画像や動画 %>
+              <%= f.label :画像or動画 %><span style="color:gray;font-size:12px;"> （許可している拡張子: jpg jpeg gif png / mp4 mov）</span><span style="color:red;font-size: 12px;">注意: 動物関連の投稿のみ</span>
               <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png,video/*',class: "form-control",placeholder: "必須" %>
             </div>
             <div class="form-group">
-              <%= f.label :タイトル %>
-              <%= f.text_field :title,placeholder: "必須",class: "form-control" %>
-            </div>
-            <div class="form-group">
               <%= f.label :本文 %>
-              <%= f.text_area :description,placeholder: "任意(xxx文字まで)",class: "form-control" %>
+              <%= f.text_area :description,class: "form-control" %>
             </div>
               <%= f.submit "投稿する", class: "btn btn-info form-control" %>
           <% end %>

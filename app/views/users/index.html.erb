@@ -2,9 +2,11 @@
 
 <h3 style="text-align: center;padding:25px 0 20px 0;font-family: serif;">おすすめユーザー</h3>
 <% @find_users.order("created_at desc").each do |user| %>
+<% if current_user != user %>
 
 <div class="users-flex">
     <div style="width: 75px;margin: 0 10px;">
+
         <%= link_to user do %>
     <%= image_tag user.avatar_image.url,class: "",style: "width:70px; height:70px;border-radius:50%;" %>
     <% end %>
@@ -25,7 +27,7 @@
 </div>
 
 
-
+<% end %>
 <% end %>
 <%= paginate @find_users %>
 

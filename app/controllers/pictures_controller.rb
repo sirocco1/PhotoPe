@@ -14,8 +14,11 @@ class PicturesController < ApplicationController
 
   def create
     @picture = current_user.pictures.new(picture_params)
-    @picture.save
-    redirect_to new_picture_path, notice: "新規投稿が正常に完了しました"
+    if @picture.save
+      redirect_to new_picture_path, notice: "新規投稿が正常に完了しました"
+    else
+
+    end
   end
 
   def show
@@ -33,7 +36,7 @@ class PicturesController < ApplicationController
 
 private
   def picture_params
-    params.require(:picture).permit(:genre_id, :image, :title, :description)
+    params.require(:picture).permit(:genre_id, :image, :description)
   end
 
 end
