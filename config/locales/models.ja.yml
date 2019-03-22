@@ -27,3 +27,5 @@ ja:
               confirmation: "が内容とあっていません"
             password_confirmation:
               confirmation: "が内容とあっていません"
+            introduce:
+              too_long: "は%{count}文字以下に設定して下さい"

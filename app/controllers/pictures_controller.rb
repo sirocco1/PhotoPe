@@ -15,9 +15,9 @@ class PicturesController < ApplicationController
   def create
     @picture = current_user.pictures.new(picture_params)
     if @picture.save
-      redirect_to new_picture_path, notice: "新規投稿が正常に完了しました"
+      redirect_to homes_user_path(current_user), notice: "新規投稿が正常に完了しました。"
     else
-
+      redirect_to homes_user_path(current_user), notice: "入力エラーが発生しています。投稿は失敗しました。"
     end
   end
 
