@@ -36,6 +36,25 @@ a:hover {
 .navbar-nav > li > a:hover {
 	background-color: transparent;
 }
+.under {
+	display: inline-block;
+	position: relative;
+ 	text-decoration: none;
+}
+.under:before{
+	content: "";
+	position: absolute;
+	left: 15px;
+	bottom: 8px;
+	width: 80%;
+	height: 1px;
+	background: white;
+	transform: scale(0, 1);
+	transition: 0.4s;
+}
+.under:hover:before {
+	transform: scale(1);
+}
 .footer-logo {
 	margin-top: 30px;
 	text-align: right;

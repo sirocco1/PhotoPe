@@ -72,3 +72,5 @@ gem 'font-awesome-rails'
 gem "jquery-turbolinks"
 gem "kaminari"
 gem 'ransack'
+gem 'rails_admin'
+gem 'cancancan'
