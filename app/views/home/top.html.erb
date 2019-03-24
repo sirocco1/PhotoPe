@@ -1,22 +1,36 @@
 <div class="header-bg">
 	<div class="header-style">
 		<p class="heading-title">動物好きのSNS</p>
-		<p class="main-itle">PhotoPe</p>
-		<p><a href="#section1" style="color:white;">初めての方はこちら</a>　/　<%= link_to ' ログインの方はこちら', new_user_session_path,style:'color:white;'%>　/　<%= link_to '新規登録の方はこちら', new_user_registration_path,style:'color:white;'%></p>
+		<p class="main-title">PhotoPe</p>
+		<p><a href="#section1" style="color:white;" >初めての方はこちら</a>　/　<%= link_to ' ログインの方はこちら', new_user_session_path,style:'color:white;'%>　/　<%= link_to '新規登録の方はこちら', new_user_registration_path,style:'color:white;'%></p>
 	</div>
 </div>
 
 <div class="scroll-container">
 	<div class="top-container">
-<p>aa</p>
-<br><br><br><br>v<br><p>aa</p><br><br><br><br><br><br><br><br><br>
+		<section id="section1"></section>
+		<h2 style="font-family: serif;letter-spacing: 0.4em;">動物専用画像&動画特化型SNSサイト<br><br>『PhotoPe』</h2>
+		<p style="opacity: 0.8; padding-top: 10px;font-family: serif;letter-spacing: 0.4em;">PhotoPeは動物好きが集まり､共有し､繋がるSNSです｡<br>共通の思いが楽しいコミュニティを作る｡そんな環境をご用意｡</p>
+	</div>
+	<div class="image-container">
+		<div class="item1">
+		<%= image_tag 'photope1.jpg',style:"width:100%;object-fit:cover;border:ridge;" %>
+		</div>
+		<div class="item2">
+				<h3 style="font-family: serif;letter-spacing: 0.3em;">1. 投稿して共有する</h3>
+				<p style="opacity: 0.8; padding-top: 10px;font-family: serif;letter-spacing: 0.4em;">飼っているペット 野生の動物<br>
+				素敵な動物達の姿を共有してみませんか？</p>
+				<p style="opacity: 0.8; padding-top: 10px;font-family: serif;letter-spacing: 0.4em;">動物好きしかいないこのサイト<br>
+				ならではの反応が待ってるかも知れません</p>
+		</div>
 
-<section id="section1">1</section>
-<p>aa</p>
-<p>aa</p>
-<p>aa</p>
-<p>aa</p>
-<p>aa</p>
+
+
+	</div>
+	<div class="image-container" style="flex-direction:row-reverse">
+		<div>
+		<%= image_tag 'photope2.jpg',style:"width:700px;object-fit:cover;border:ridge;" %>
+		</div>
 	</div>
 </div>
 

@@ -10,6 +10,7 @@
 #pictures-flex {
 	display: flex;
 	flex-wrap: wrap;
+	margin-top: 15px;
 }
 .picture-item {
 	width: 220px;
@@ -19,13 +20,19 @@
 }
 .saerch-flex {
 	display: flex;
-	padding-top: 15px;
+	padding-top: 40px;
 	padding-bottom: 20px;
-	border-bottom: 1px dashed red;
 }
 .saerch-item {
 	width: 220px;
 	text-align: center;
+}
+.sub-search {
+	text-align: center;
+    border-bottom: ridge;
+    padding-bottom: 20px;
+    border-color: #ff0018;
+    margin-right: 20px;
 }
 /*button_tagのデフォルトcssをリセット*/
 button{

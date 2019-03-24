@@ -30,6 +30,14 @@
 			<% end %>
 		</div>
 	</div>
+	<div class="sub-search">
+		<%= search_form_for(@search, method: :get)  do |f| %>
+			<%= f.collection_select :genre_id_eq, Genre.all, :id, :name,{include_blank: "指定なし"} %>
+		<%= button_tag type: :submit do %>
+			<i class="fas fa-search"></i>
+ 		<% end %>
+ 		<% end %>
+	</div>
 	<div id="pictures-flex">
 		<%= render partial: 'picture', collection: @pictures %>
 
