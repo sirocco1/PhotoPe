@@ -5,32 +5,41 @@
 		<p><a href="#section1" style="color:white;" >初めての方はこちら</a>　/　<%= link_to ' ログインの方はこちら', new_user_session_path,style:'color:white;'%>　/　<%= link_to '新規登録の方はこちら', new_user_registration_path,style:'color:white;'%></p>
 	</div>
 </div>
-
 <div class="scroll-container">
+	<section id="section1"></section>
 	<div class="top-container">
-		<section id="section1"></section>
-		<h2 style="font-family: serif;letter-spacing: 0.4em;">動物専用画像&動画特化型SNSサイト<br><br>『PhotoPe』</h2>
-		<p style="opacity: 0.8; padding-top: 10px;font-family: serif;letter-spacing: 0.4em;">PhotoPeは動物好きが集まり､共有し､繋がるSNSです｡<br>共通の思いが楽しいコミュニティを作る｡そんな環境をご用意｡</p>
+		<h2 style="font-family: serif;letter-spacing: 0.4em;margin-bottom: 20px;">動物専用画像&動画特化型SNSサイト<br><br>『PhotoPe』</h2>
+		<p  class="home-text">PhotoPeは動物好きが集まり､共有し､繋がるSNSです｡<br>共通の思いが楽しいコミュニティを作る｡そんな環境をご用意｡</p>
 	</div>
 	<div class="image-container">
-		<div class="item1">
-		<%= image_tag 'photope1.jpg',style:"width:100%;object-fit:cover;border:ridge;" %>
+		<div class="item1"><%= image_tag 'photope1.jpg',style:"width:95%;object-fit:cover;border:ridge;" %></div>
+		<div class="item2" style="padding-top: 80px;">
+			<h3 style="font-family: serif;letter-spacing: 0.3em;">1. 投稿して共有する</h3>
+			<p  class="home-text">飼っているペット 野生の動物<br>素敵な動物達の姿を共有してみませんか？</p>
+			<p  class="home-text">動物好きしかいないこのサイト<br>ならではの反応が待ってるかも知れません</p>
 		</div>
-		<div class="item2">
-				<h3 style="font-family: serif;letter-spacing: 0.3em;">1. 投稿して共有する</h3>
-				<p style="opacity: 0.8; padding-top: 10px;font-family: serif;letter-spacing: 0.4em;">飼っているペット 野生の動物<br>
-				素敵な動物達の姿を共有してみませんか？</p>
-				<p style="opacity: 0.8; padding-top: 10px;font-family: serif;letter-spacing: 0.4em;">動物好きしかいないこのサイト<br>
-				ならではの反応が待ってるかも知れません</p>
-		</div>
-
-
-
 	</div>
 	<div class="image-container" style="flex-direction:row-reverse">
-		<div>
-		<%= image_tag 'photope2.jpg',style:"width:700px;object-fit:cover;border:ridge;" %>
+		<div class="item1" style="text-align: right;"><%= image_tag 'photope2.jpg',style:"width:95%;object-fit:cover;border:ridge;" %></div>
+		<div class="item2" style="padding-top: 100px;">
+			<h3 style="font-family: serif;letter-spacing: 0.3em;">2. 検索して見つける</h3>
+			<p  class="home-text">検索機能を使って自分の好きな<br>動物の画像や動画を探すことができます</p>
 		</div>
 	</div>
+	<div class="image-container">
+		<div class="item1"><%= image_tag 'photope3.jpg',style:"width:95%;object-fit:cover;border:ridge;" %></div>
+		<div class="item2" style="padding-top: 80px;">
+			<h3 style="font-family: serif;letter-spacing: 0.3em;">3. 反応して繋がる</h3>
+			<p  class="home-text">フォロー　いいね　コメント<br>気になる投稿に反応する事ができます<br></p>
+			<p  class="home-text">同じ価値観を持つ人達との交流が<br>あなたの世界を広げてくれるかも知れません</p>
+		</div>
+	</div>
+</div>
+<div class="sample-container">
+	<p style="font-family: serif;letter-spacing: 0.3em;">PhotoPeのご利用は無料会員制で新規登録が必要となります<br><%= link_to '新規登録へ', new_user_registration_path%></p>
+	</p>
+	<br>
+	<p style="font-family: serif;letter-spacing: 0.3em;">登録前にサイトを覗いていきたい方はこちらをご利用ください<br>
+	<%= link_to 'サンプルへ', new_user_registration_path%></p>
 </div>
 

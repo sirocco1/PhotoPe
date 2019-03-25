@@ -15,5 +15,6 @@ Rails.application.routes.draw do
   resources :genres, only: [:create]
   root 'home#top'
   get 'home/about'
+  get 'home/sample'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
