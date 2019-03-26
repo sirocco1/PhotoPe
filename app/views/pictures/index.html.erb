@@ -1,10 +1,6 @@
 <div class="picture-container">
 	<div class="saerch-flex">
-		<div class="saerch-item">
-			<%= link_to  request.path,data: {"turbolinks" => false} do %>
-				<%= image_tag "newform.jpg",size: '225x120'%>
-			<% end %>
-		</div>
+		<div class="saerch-item"><%= link_to  request.path,data: {"turbolinks" => false} do %><%= image_tag "newform.jpg",size: '225x120'%><% end %></div>
 		<div class="saerch-item">
 			<%= search_form_for(@search, method: :get)  do |f| %>
 				<%= button_tag type: :submit do %>
@@ -29,7 +25,7 @@
 	   			<% end %>
 			<% end %>
 		</div>
-				<div class="saerch-item">
+		<div class="saerch-item">
 			<%= search_form_for(@search, method: :get)  do |f| %>
 				<%= button_tag type: :submit do %>
 					<%= f.hidden_field :genre_name_eq, value:"インコ" %>
@@ -37,7 +33,7 @@
 	   			<% end %>
 			<% end %>
 		</div>
-				<div class="saerch-item">
+		<div class="saerch-item">
 			<%= search_form_for(@search, method: :get)  do |f| %>
 				<%= button_tag type: :submit do %>
 					<%= f.hidden_field :genre_name_eq, value:"インコ" %>
@@ -45,25 +41,22 @@
 	   			<% end %>
 			<% end %>
 		</div>
-
-
 	</div>
 	<div class="sub-search">
 		<%= search_form_for(@search, method: :get)  do |f| %>
 			<%= f.collection_select :genre_id_eq, Genre.all, :id, :name,{include_blank: "指定なし"} %>
-		<%= button_tag type: :submit do %>
-			<i class="fas fa-search"></i>
- 		<% end %>
+			<%= button_tag type: :submit do %>
+				<i class="fas fa-search"></i>
+ 			<% end %>
  		<% end %>
  		<span style="float:right;position: relative;top: -40px;">⇨⇨⇨</span>
 	</div>
 	<div id="pictures-flex">
 		<%= render partial: 'picture', collection: @pictures %>
-
 	</div>
-			<div style="display: none;">
+	<div style="display: none;">
 		<%= paginate @pictures %>
-		</div>
+	</div>
 </div>
 <div class="page-load-status" style="display: none;text-align:center;">
 	<div class="infinite-scroll-request">

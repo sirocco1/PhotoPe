@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
 		@find = User.ransack(params[:q])
   	@find_users = @find.result.page(params[:page]).per(300)
   end
+
   def after_sign_in_path_for(resource)
   	user_path(resource)
   end
@@ -14,4 +15,5 @@ class ApplicationController < ActionController::Base
  	  def configure_permitted_parameters
  	  	devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :avatar_image])
     end
+
 end
