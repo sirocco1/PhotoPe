@@ -1,8 +1,9 @@
 class GenresController < ApplicationController
+
 	def create
 		@genre = Genre.new(genre_params)
 		@genre.save
-		redirect_to new_picture_path, notice: "ジャンル追加したよお！"
+		redirect_to new_picture_path, notice: "ジャンル追加！"
 	end
 
   private

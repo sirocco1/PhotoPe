@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+
 	def create
 	  @picture = Picture.find(params[:picture_id])
    	  @comment = @picture.comments.build(comment_params)
@@ -19,4 +20,5 @@ class CommentsController < ApplicationController
 	def comment_params
 		params.require(:comment).permit(:content, :picture_id, :user_id)
 	end
+
 end

@@ -1,34 +1,27 @@
 <div class="users-container">
-
-<h3 style="text-align: center;padding:25px 0 20px 0;font-family: serif;">おすすめユーザー</h3>
-<% @find_users.order("created_at desc").each do |user| %>
-<% if current_user != user %>
-
-<div class="users-flex">
-    <div style="width: 75px;margin: 0 10px;">
-
-        <%= link_to user do %>
-    <%= image_tag user.avatar_image.url,class: "",style: "width:70px; height:70px;border-radius:50%;" %>
-    <% end %>
-    </div>
-    <div style="flex-grow: 3;">
-	<strong><%= link_to user.name, user %></strong>
-    <% if current_user != user %>
-                    <% if user.followed_by?(current_user) %>
-                        <span class="following" style="margin: 10px 10px 0 0"><%=link_to "フォロー中", user_relationships_path(user.id), method: :delete,"data-confirm" => "本当にフォローを解除しますか？",style: "color:#fff;" %></span>
-                    <% else %>
-                        <span class="to-follow" style="margin: 10px 10px 0 0"><%=link_to "フォローする", user_relationships_path(user.id), method: :post %></span>
-                    <% end %>
-                <% end %>
-    <p style="font-size: 12px;"><%= truncate(user.introduce, length: 100) %></p>
-    <span style="color:gray;font-size: 10px;position:relative;top:-15px;">投稿<%= user.pictures.count%> / フォロー<%= user.followings.count%> / フォロワー<%= user.followers.count%></span>
-
-    </div>
-</div>
-
-
-<% end %>
-<% end %>
-<%= paginate @find_users %>
-
+    <h3 style="text-align: center;padding:25px 0 20px 0;font-family: serif;">おすすめユーザー</h3>
+        <% @find_users.order("created_at desc").each do |user| %>
+            <% if current_user != user %>
+                <div class="users-flex">
+                    <div style="width: 75px;margin: 0 10px;">
+                        <%= link_to user do %>
+                            <%= image_tag user.avatar_image.url,class: "",style: "width:70px; height:70px;border-radius:50%;" %>
+                        <% end %>
+                    </div>
+                    <div style="flex-grow: 3;">
+            	       <strong><%= link_to user.name, user %></strong>
+                        <% if current_user != user %>
+                            <% if user.followed_by?(current_user) %>
+                                <span class="following" style="margin: 10px 10px 0 0"><%=link_to "フォロー中", user_relationships_path(user.id), method: :delete,"data-confirm" => "本当にフォローを解除しますか？",style: "color:#fff;" %></span>
+                            <% else %>
+                                <span class="to-follow" style="margin: 10px 10px 0 0"><%=link_to "フォローする", user_relationships_path(user.id), method: :post %></span>
+                            <% end %>
+                        <% end %>
+                        <p style="font-size: 12px;"><%= truncate(user.introduce, length: 100) %></p>
+                        <span style="color:gray;font-size: 10px;position:relative;top:-15px;">投稿<%= user.pictures.count%> / フォロー<%= user.followings.count%> / フォロワー<%= user.followers.count%></span>
+                    </div>
+                </div>
+            <% end %>
+        <% end %>
+    <%= paginate @find_users %>
 </div>

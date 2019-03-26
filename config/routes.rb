@@ -1,16 +1,16 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
-  resources :users do
+  resources :users,except:[:new, :create] do
   	resource :relationships, only: [:create, :destroy]
   	get :follows, on: :member
   	get :followers, on: :member
     get :favorites, on: :member
     get :homes, on: :member
   end
-  resources :pictures do
+  resources :pictures,only:[:index, :show, :create,:destroy] do
     resource :favorites, only: [:create, :destroy]
-    resources :comments
+    resources :comments, only: [:create, :destroy]
   end
   resources :genres, only: [:create]
   root 'home#top'

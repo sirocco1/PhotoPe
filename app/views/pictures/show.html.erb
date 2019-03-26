@@ -7,64 +7,54 @@
     			<%= video_tag @picture.image.url,size: '500x500',controls: true, autobuffer: true,style:'border: ridge;' %>
   			<% end %>
 		<% end %>
-
 		<div class="picture-right">
 			<div class="picture-header">
-				<%= link_to user_path(@picture.user_id) do %>
-				<%= image_tag @picture.user.avatar_image.url,class: "avatar-image",size:'75x75' %>
-				<% end %>
-				<%= link_to user_path(@picture.user_id) do %>
-				<strong class="postname"><%= @picture.user.name %></strong>
-				<% end %>
+				<%= link_to user_path(@picture.user_id) do %><%= image_tag @picture.user.avatar_image.url,class: "avatar-image",size:'75x75' %><% end %>
+				<%= link_to user_path(@picture.user_id) do %><strong class="postname"><%= @picture.user.name %></strong><% end %>
 			</div>
 			<div class="picture-description">
-				<span>投稿内容:</span>
-				<p><%= @picture.description %></p>
+				<span>投稿内容:</span><p><%= @picture.description %></p>
 			</div>
 			<div class="picture-comment">
 				<span>コメント一覧:</span>
 				<div id="comments_area">
-      				<%= render partial: 'comments/index', locals: { comments: @comments } %>
-    			</div>
+      	   <%= render partial: 'comments/index', locals: { comments: @comments } %>
+    		</div>
 			</div>
 			<div class="fabo-style">
         <span style='color:gray;'><%= @picture.created_at.strftime("%Y-%m-%d %H:%M") %> / </span>
       			<div id="favo_buttons_<%= @picture.id %>" style="display: inline-block;">
           		<!-- 	<%#= render partial: 'favorites/post', locals: { picture: @picture} %> -->
-          			<% if @picture.favorited_by?(current_user) %>
-    <%=link_to "/pictures/#{@picture.id}/favorites", method: :delete,remote: true do %>
-    <span style='color:gray;'><%=  time_ago_in_words(@picture.created_at)%>前  </span>
-        <span class="icolor1"><i class="fas fa-heart fa-lg"></i>  <%= @picture.favorites.count %></span>
-    <% end %>
-    <span style="color:gray;"><i class="far fa-comments fa-lg"></i>  <%= @picture.comments.count %></span>
-<% else %>
-<span style='color:gray;'><%=  time_ago_in_words(@picture.created_at)%>前 </span>
-    <%=link_to "/pictures/#{@picture.id}/favorites", method: :post,remote: true do %>
-        <span class="icolor0"><i class="far fa-heart fa-lg"></i>  <%= @picture.favorites.count %></span>
-    <% end %>
-    <span style="color:gray;"><i class="far fa-comments fa-lg"></i>  <%= @picture.comments.count %></span>
-<% end %>
-</div>
-		    	<% if current_user == @picture.user %>
-      			<span class="dropdown">
-					<button class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-					<i class="fas fa-cog" style="color:gray;margin-left: 3px;"></i>
-  					</button>
-  					<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-  						<li style="font-size: 12px;"><%= link_to "・投稿を削除する", picture_path(@picture), method: :delete,"data-confirm" => "本当に投稿を削除しますか？"%></li>
-  					</ul>
-      			</span>
+          		<% if @picture.favorited_by?(current_user) %>
+                  <%=link_to "/pictures/#{@picture.id}/favorites", method: :delete,remote: true do %>
+                    <span style='color:gray;'><%=  time_ago_in_words(@picture.created_at)%>前  </span>
+                    <span class="icolor1"><i class="fas fa-heart fa-lg"></i>  <%= @picture.favorites.count %></span>
+                  <% end %>
+                    <span style="color:gray;"><i class="far fa-comments fa-lg"></i>  <%= @picture.comments.count %></span>
+              <% else %>
+                    <span style='color:gray;'><%=  time_ago_in_words(@picture.created_at)%>前 </span>
+                  <%=link_to "/pictures/#{@picture.id}/favorites", method: :post,remote: true do %>
+                    <span class="icolor0"><i class="far fa-heart fa-lg"></i>  <%= @picture.favorites.count %></span>
+                  <% end %>
+                    <span style="color:gray;"><i class="far fa-comments fa-lg"></i>  <%= @picture.comments.count %></span>
+              <% end %>
+            </div>
+		    	  <% if current_user == @picture.user %>
+      			   <span class="dropdown">
+  					     <button class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="fas fa-cog" style="color:gray;margin-left: 3px;"></i></button>
+    					   <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    						    <li style="font-size: 12px;"><%= link_to "・投稿を削除する", picture_path(@picture), method: :delete,"data-confirm" => "本当に投稿を削除しますか？"%></li>
+    					   </ul>
+      			   </span>
       			<% end %>
-
-
-                <div>
-      			<%= render 'pictures/favorite' %>
+            <div>
+      			 <%= render 'pictures/favorite' %>
             </div>
   			</div>
-		</div>
+		  </div>
 	</div>
 	<div class="comment-form">
-      	<%= render partial: 'comments/form', locals: { comment: @comment, picture: @picture } %>
+    <%= render partial: 'comments/form', locals: { comment: @comment, picture: @picture } %>
 	</div>
 </div>
 

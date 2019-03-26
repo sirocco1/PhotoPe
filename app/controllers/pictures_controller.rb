@@ -6,12 +6,6 @@ class PicturesController < ApplicationController
     # .includes(:user)
   end
 
-  def new
-    @picture = Picture.new
-    @pictures = Picture.all #仮作成 / 投稿機能確認用
-    @genre = Genre.new #仮作成 / ジャンル追加確認用
-  end
-
   def create
     @picture = current_user.pictures.new(picture_params)
     if @picture.save
