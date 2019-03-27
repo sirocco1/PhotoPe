@@ -1,0 +1,34 @@
+<div class="users-container">
+    <h3 style="text-align: center;padding-top:25px;padding-bottom:10px;font-family: serif;color:blue;">ダイレクトメッセージのお部屋</h3>
+    <div class="users-flex">
+        <% @entries.each do |e| %>
+            <div style="width: 75px;margin: 0 10px;">
+                <%= image_tag e.user.avatar_image.url,class: "",style: "width:70px; height:70px;border-radius:50%;" %>
+            </div>
+            <div>
+                <span><%= e.user.name %></span>
+            </div>
+        <% end %>
+    </div>
+    <%= form_for @message do |f| %>
+        <div style="text-align: center;margin-top: 20px;">
+            <%= f.text_field :content, :placeholder => "メッセージを入力して下さい" , :size => 50,style:"text-align:center;border-radius:30px;" %>
+            <%= f.hidden_field :room_id, :value => @room.id %>
+            <br><br>
+            <%= f.submit "投稿する",style:"background-color: aliceblue;" %>
+        </div>
+    <% end %>
+</div>
+<hr>
+<div class="users-container">
+    <% if @messages.present? %>
+        <% @messages.order(created_at: :desc).each do |m| %>
+            <span><%= m.created_at.strftime("%Y-%m-%d %H:%M") %>：</span>
+            <span><%= m.user.name %>：</span>
+            <span><%= m.content %></span>
+            <hr>
+        <% end %>
+    <% else %>
+        <h4 class="text-center">メッセージはまだありません</h4>
+    <% end %>
+</div>

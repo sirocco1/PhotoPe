@@ -4,7 +4,7 @@
         <div class="col-xs-3">
             <%= render 'users/profile' %>
             <% if current_user.try(:admin?) %>
-            <%= link_to "管理画面", "/admin" %>
+                <%= link_to "管理画面", "/admin" %>
             <% end %>
         </div>
         <div class="col-xs-9">

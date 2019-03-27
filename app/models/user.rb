@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   mount_uploader :avatar_image, AvatarImageUploader
+  has_many :messages, dependent: :destroy
+  has_many :entries, dependent: :destroy
   has_many :pictures, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy

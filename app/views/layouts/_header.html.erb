@@ -1,7 +1,7 @@
 <header id="header" class="nav navbar-nav">
 	<% if user_signed_in? %>
-		<ul class="nav navbar-nav navbar-left" style="margin-left: 150px;">
-			<li style="margin-left: 50px;margin-top: 13px;">
+		<ul class="nav navbar-nav navbar-left" style="margin-left: 12%;">
+			<li style="margin-top: 13px;">
 				<div class="dropdown">
 					<button class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 					<i class="fas fa-cog fa-2x" style="color:white;"></i>
@@ -14,19 +14,22 @@
   					</ul>
 				</div>
 			</li>
-			<div style="float:left;margin-top: 4px;margin-left:30px;">
-				<%= link_to pictures_path,data: {"turbolinks" => false} do %><i class="far fa-images fa-3x" style="color:#b0f90b;"></i><% end %>
+			<div style="float:left;margin-top: 4px;margin-left:40px;">
+				<%= link_to messages_path do %><i class="far fa-envelope fa-3x" style="color:white;"></i><% end %>
 			</div>
-			<div style="float:left;margin-top: 4px;margin-left:30px;">
+			<div style="float:left;margin-top: 4px;margin-left:40px;">
 				<%= link_to users_path do %><i class="fas fa-users fa-3x" style="color:white;"></i><% end %>
 			</div>
-			<div style="float:left;margin-left: 250px;">
+			<div style="float:left;margin-top: 4px;margin-left:40px;">
+				<%= link_to pictures_path,data: {"turbolinks" => false} do %><i class="far fa-images fa-3x" style="color:white;"></i><% end %>
+			</div>
+			<div style="float:left;margin-left: 170px;">
 				<span class="home-link">
 					<%= link_to 'PhotoPe',homes_user_path(current_user),style: 'color:#9810f9;'%>
 				</span>
 			</div>
 		</ul>
-		<ul class="nav navbar-nav navbar-right" style="margin-right: 150px;">
+		<ul class="nav navbar-nav navbar-right" style="margin-right: 12%;">
 			<li style="margin-right: 15px;">
 				<%= search_form_for @find, url: users_path do |f| %>
 					<%= f.text_field :name_cont ,placeholder: 'ユーザー検索',style:'border-radius:30px; padding-left:15px;margin-top:13px;' %>

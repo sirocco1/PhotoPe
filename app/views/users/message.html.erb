@@ -1,0 +1,42 @@
+ <div class="users-container">
+    <h3 style="text-align: center;padding:25px 0 20px 0;font-family: serif;">メッセージを送る相手が間違っていないか確認</h3>
+    <p>自分：</p>
+    <div class="users-flex">
+        <div style="width: 75px;margin: 0 10px;">
+            <%= image_tag current_user.avatar_image.url,class: "",style: "width:70px; height:70px;border-radius:50%;" %>
+         </div>
+        <div style="flex-grow: 3;">
+            <strong><%= current_user.name %></strong>
+            <p style="font-size: 12px;"><%= truncate(current_user.introduce, length: 100) %></p>
+            <span style="color:gray;font-size: 10px;position:relative;top:-15px;">投稿<%= current_user.pictures.count%> / フォロー<%= current_user.followings.count%> / フォロワー<%= current_user.followers.count%></span>
+        </div>
+    </div>
+    <br>
+    <p>相手：</p>
+    <div class="users-flex">
+        <div style="width: 75px;margin: 0 10px;">
+            <%= image_tag @user.avatar_image.url,class: "",style: "width:70px; height:70px;border-radius:50%;" %>
+        </div>
+        <div style="flex-grow: 3;">
+            <strong><%= @user.name %></strong>
+            <p style="font-size: 12px;"><%= truncate(@user.introduce, length: 100) %></p>
+            <span style="color:gray;font-size: 10px;position:relative;top:-15px;">投稿<%= @user.pictures.count%> / フォロー<%= @user.followings.count%> / フォロワー<%= @user.followers.count%></span>
+        </div>
+    </div>
+    <div class="dm-room">
+        <% if @user.id == current_user.id %>
+        <% else %>
+             <% if @isRoom == true %>
+                <p><a href="/rooms/<%= @roomId %>"><span style= "width:180px;height:40px;line-height: 38px;border-radius:30px;background-color:aliceblue;letter-spacing:0.1em;display: inline-block;color:black;border:1px solid gray;">DM部屋へ</span></a></p>
+            <% else %>
+                <%= form_for @room do |f| %>
+                    <%= fields_for @entry do |e| %>
+                        <%= e.hidden_field :user_id, :value=> @user.id %>
+                    <% end %>
+                    <%= f.submit "DM部屋へ",style: "width:180px;height:40px;border-radius:30px;background-color:aliceblue;letter-spacing:0.1em;"%>
+                <% end %>
+            <% end %>
+        <% end %>
+    </div>
+</div>
+
