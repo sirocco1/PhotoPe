@@ -10,9 +10,13 @@
                     <div class="post-item">
                         <% if picture.image? %>
                             <% if picture.image.file.content_type.include?('image/') %>
-                                <%= image_tag picture.image.url(:thumb),size: '250x250' %>
+                                <%= link_to picture_path(picture.id) do %>
+                                    <%= image_tag picture.image.url(:thumb),size: '250x250' %>
+                                <% end %>
                             <% else %>
-                                <%= video_tag picture.image.url,size: '250x250',controls: true, autobuffer: true %>
+                                <%= link_to picture_path(picture.id) do %>
+                                    <%= video_tag picture.image.url,size: '250x250',controls: true, autobuffer: true %>
+                                <% end %>
                             <% end %>
                         <% end %>
                         <!-- JSファイルを呼び出し -->
