@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :screen_user, except: [:index, :show]
+  before_action :screen_user, except: [:index, :show, :message]
 
   def index
   	# app_controllerに記述(ヘッダーに検索機能を表示している為)
@@ -26,6 +26,9 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to root_path
   end
 
   def follows
@@ -56,6 +59,30 @@ class UsersController < ApplicationController
           current = Picture.where(user_id: current_user.id).order(created_at: :desc)
           @pictures.concat(current)
     @pictures = @pictures.sort_by{|picture| picture.created_at}.reverse
+  end
+
+  def message
+    @user = User.find(params[:id])
+    @users = @user.followings
+    @favorite_pictures = @user.favorite_pictures
+    @currentUserEntry=Entry.where(user_id: current_user.id)
+    @userEntry=Entry.where(user_id: @user.id)
+    if @user.id == current_user.id
+    else
+      @currentUserEntry.each do |cu|
+        @userEntry.each do |u|
+          if cu.room_id == u.room_id then
+            @isRoom = true
+            @roomId = cu.room_id
+          end
+        end
+      end
+      if @isRoom
+      else
+        @room = Room.new
+        @entry = Entry.new
+      end
+    end
   end
 
   private

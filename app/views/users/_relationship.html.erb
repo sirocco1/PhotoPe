@@ -1,7 +1,9 @@
 <% @users.each do |user| %>
     <div class="flex-container">
         <div class="flex-item1">
-            <%= image_tag user.avatar_image.url,class: "",style: "width:90px; height:90px;border-radius:50%;" %>
+            <%= link_to user_path(user) do %>
+                <%= image_tag user.avatar_image.url,class: "",style: "width:90px; height:90px;border-radius:50%;" %>
+            <% end %>
         </div>
         <div class="flex-item2">
   			<strong><%= link_to user.name, user_path(user.id),class: "user-name" %></strong>
