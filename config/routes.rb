@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
   end
   resources :genres, only: [:create]
-  resources :messages, only: [:create, :index]
+  resources :messages, only: [:index,:create, :destroy]
   resources :rooms, only: [:create, :show, :index]
   root 'home#top'
   get 'home/about'

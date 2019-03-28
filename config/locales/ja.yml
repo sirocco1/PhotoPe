@@ -35,3 +35,5 @@ ja:
       over_x_years:
         one:   "1年以上"
         other: "%{count}年以上"
+  date:
+    month_names: [~, 1月, 2月, 3月, 4月, 5月, 6月, 7月, 8月, 9月, 10月, 11月, 12月]
