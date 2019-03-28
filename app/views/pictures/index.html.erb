@@ -28,16 +28,32 @@
 		<div class="saerch-item">
 			<%= search_form_for(@search, method: :get)  do |f| %>
 				<%= button_tag type: :submit do %>
-					<%= f.hidden_field :genre_name_eq, value:"インコ" %>
-	   				<%= image_tag "inkoform.jpg",size: '225x120'%>
+					<%= f.hidden_field :genre_name_eq, value:"ハムスター" %>
+	   				<%= image_tag "hamu.jpg",size: '225x120'%>
 	   			<% end %>
 			<% end %>
 		</div>
 		<div class="saerch-item">
 			<%= search_form_for(@search, method: :get)  do |f| %>
 				<%= button_tag type: :submit do %>
-					<%= f.hidden_field :genre_name_eq, value:"インコ" %>
-	   				<%= image_tag "inkoform.jpg",size: '225x120'%>
+					<%= f.hidden_field :genre_name_eq, value:"うさぎ" %>
+	   				<%= image_tag "usagi1.jpg",size: '225x120'%>
+	   			<% end %>
+			<% end %>
+		</div>
+		<div class="saerch-item">
+			<%= search_form_for(@search, method: :get)  do |f| %>
+				<%= button_tag type: :submit do %>
+					<%= f.hidden_field :genre_name_eq, value:"フェレット" %>
+	   				<%= image_tag "fere.jpg",size: '225x120'%>
+	   			<% end %>
+			<% end %>
+		</div>
+		<div class="saerch-item">
+			<%= search_form_for(@search, method: :get)  do |f| %>
+				<%= button_tag type: :submit do %>
+					<%= f.hidden_field :genre_name_eq, value:"モルモット" %>
+	   				<%= image_tag "moru.jpg",size: '225x120'%>
 	   			<% end %>
 			<% end %>
 		</div>
