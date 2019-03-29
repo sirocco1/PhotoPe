@@ -1,9 +1,9 @@
 class PicturesController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @search = Picture.page(params[:page]).ransack(params[:q])
     @pictures = @search.result.order(created_at: "desc")
-    # .includes(:user)
   end
 
   def create

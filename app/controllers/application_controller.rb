@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
 	def set_search
 		@find = User.ransack(params[:q])
-  	@find_users = @find.result.page(params[:page]).per(300)
+  	@find_users = @find.result.page(params[:page]).per(200)
   end
 
   def after_sign_in_path_for(resource)

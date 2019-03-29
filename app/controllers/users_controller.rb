@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def show
   	@user =  User.find(params[:id])
-  	@pictures = @user.pictures.order(created_at: "desc")
+  	@pictures = @user.pictures.order(created_at: "desc").page(params[:page]).per(200)
     @favorite_pictures = @user.favorite_pictures
   end
 
@@ -33,19 +33,19 @@ class UsersController < ApplicationController
 
   def follows
     @user = User.find(params[:id])
-    @users = @user.followings
+    @users = @user.followings.page(params[:page]).per(200)
     @favorite_pictures = @user.favorite_pictures
   end
 
   def followers
     @user = User.find(params[:id])
-    @users = @user.followers
+    @users = @user.followers.page(params[:page]).per(200)
     @favorite_pictures = @user.favorite_pictures
   end
 
   def favorites
     @user = User.find(params[:id])
-    @favorite_pictures = @user.favorite_pictures.order("favorites.created_at desc")
+    @favorite_pictures = @user.favorite_pictures.order("favorites.created_at desc").page(params[:page]).per(200)
   end
 
   def homes

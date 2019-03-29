@@ -12,7 +12,7 @@
             	       <strong><%= link_to user.name, user %></strong>
                         <% if current_user != user %>
                             <% if user.followed_by?(current_user) %>
-                                <span class="following" style="margin: 10px 10px 0 0"><%=link_to "フォロー中", user_relationships_path(user.id), method: :delete,"data-confirm" => "本当にフォローを解除しますか？",style: "color:#fff;" %></span>
+                                <span class="following" style="margin: 10px 10px 0 0"><%=link_to "フォロー中", user_relationships_path(user.id), method: :delete,style: "color:#fff;" %></span>
                             <% else %>
                                 <span class="to-follow" style="margin: 10px 10px 0 0"><%=link_to "フォローする", user_relationships_path(user.id), method: :post %></span>
                             <% end %>

@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  before_action :authenticate_user!, only: [:create, :index]
+  before_action :authenticate_user!
 
   def index
   	@users = current_user.followings

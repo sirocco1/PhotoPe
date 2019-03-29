@@ -14,7 +14,7 @@
             			<span class="to-follow"><%=link_to "フォローする", user_relationships_path(user.id), method: :post %></span>
         			<% end %>
     			<% end %>
-    			<p style="padding-top:10px;"><%= user.introduce %></p>
+    			<p style="padding-top:10px;"><%= truncate(user.introduce, length: 150) %></p>
     	</div>
     </div>
 <% end %>
