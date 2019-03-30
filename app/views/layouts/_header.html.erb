@@ -1,5 +1,6 @@
-<header id="header" class="nav navbar-nav">
+<header id="header" class="nav navbar-nav" style="text-align: center;">
 	<% if user_signed_in? %>
+		<span class="home-link"><%= link_to 'PhotoPe',homes_user_path(current_user),style: 'color:#9810f9;'%></span>
 		<ul class="nav navbar-nav navbar-left" style="margin-left: 12%;">
 			<li style="margin-top: 13px;">
 				<div class="dropdown">
@@ -22,11 +23,6 @@
 			</div>
 			<div style="float:left;margin-top: 4px;margin-left:40px;">
 				<%= link_to pictures_path,data: {"turbolinks" => false} do %><i class="far fa-images fa-3x" style="color:white;"></i><% end %>
-			</div>
-			<div style="float:left;margin-left: 170px;">
-				<span class="home-link">
-					<%= link_to 'PhotoPe',homes_user_path(current_user),style: 'color:#9810f9;'%>
-				</span>
 			</div>
 		</ul>
 		<ul class="nav navbar-nav navbar-right" style="margin-right: 12%;">
