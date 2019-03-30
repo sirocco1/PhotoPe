@@ -29,7 +29,7 @@
 							<%= f.file_field :avatar_image,accept: 'image/jpeg,image/gif,image/png', class: "form-control" %>
 						</div>
 						<div class="field">
-							<%= f.label :自己紹介 %><span style="color:gray;font-size:12px;">（任意）　<span id="introducelength">/300文字以内</span></span>
+							<%= f.label :自己紹介 %><span style="color:gray;font-size:12px;">（任意）　<span id="introducelength">/200文字以内</span></span>
 							<%= f.text_area :introduce , class: "form-control",rows: "7",onkeyup: "UserLength(value);"%>
 						</div>
 					</div>
